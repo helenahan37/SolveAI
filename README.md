@@ -1,6 +1,6 @@
 # yoyo-solveAI
 
-Utilize ChatGPT Create Subscription-based SAAS with MERN and Stripe
+An AI-blog generator, utilize ChatGPT Create Subscription-based SAAS with MERN and Stripe
 
 Backend: Node.js
 
