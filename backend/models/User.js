@@ -41,14 +41,18 @@ const userSchema = new mongoose.Schema(
 			default: 0,
 		},
 		nextBillingDate: Date,
-		payments: {
-			type: mongoose.Schema.Types.ObjectId,
-			ref: 'Payment',
-		},
-		historys: {
-			type: mongoose.Schema.Types.ObjectId,
-			ref: 'History',
-		},
+		payments: [
+			{
+				type: mongoose.Schema.Types.ObjectId,
+				ref: 'Payment',
+			},
+		],
+		contentHistory: [
+			{
+				type: mongoose.Schema.Types.ObjectId,
+				ref: 'ContentHistory',
+			},
+		],
 	},
 	{
 		timestamps: true,
