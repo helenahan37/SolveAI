@@ -2,6 +2,8 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 require('dotenv').config();
 const usersRouter = require('./routes/usersRouter');
+const openAIRouter = require('./routes/openAIRouter');
+
 const { errorHandler } = require('./middlewares/errorMiddleware');
 require('./utils/connectDB')();
 
@@ -16,6 +18,7 @@ app.use(cookieParser());
 
 //*===Routes===//
 app.use('/api/users', usersRouter);
+app.use('/api/openai', openAIRouter);
 
 //*===Error Handler===//
 app.use(errorHandler);

@@ -11,3 +11,5 @@ Frontend: React
 Subscription base: stripe
 
 Database: MongoDB
+
+Using OpenAI text generation models
