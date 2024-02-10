@@ -20,7 +20,8 @@
 		"express-async-handler": "^1.2.0",
 		"jsonwebtoken": "^9.0.2",
 		"mongoose": "^8.1.1",
-		"openai": "^4.27.0"
+		"openai": "^4.27.0",
+		"stripe": "^14.16.0"
 	},
 	"devDependencies": {
 		"nodemon": "^3.0.3"

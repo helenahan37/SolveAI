@@ -28,7 +28,7 @@ const userSchema = new mongoose.Schema(
 		tiralExpries: {
 			type: Date,
 		},
-		subscription: {
+		subscriptionPlan: {
 			type: Boolean,
 			enum: ['Trial', 'Free', 'Basic', 'Premium'],
 		},
