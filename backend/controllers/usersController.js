@@ -56,7 +56,7 @@ const login = asyncHandler(async (req, res) => {
 		throw new Error('Invalid email or password');
 	}
 	//check if the password is correct
-	const isPasswordMatch = await bycrypt.compare(password, user?.hashedPassword);
+	const isPasswordMatch = await bycrypt.compare(password, user?.password);
 	if (!isPasswordMatch) {
 		res.status(401);
 		throw new Error('Invalid email or password');
@@ -68,10 +68,14 @@ const login = asyncHandler(async (req, res) => {
 	//send response
 	res.json({
 		status: 'Success',
+		_id: user?._id,
 		message: 'User logged in successfully',
+		username: user?.username,
+		email: user?.email,
 	});
 });
 
 module.exports = {
 	register,
+	login,
 };
