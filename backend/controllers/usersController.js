@@ -37,12 +37,38 @@ const register = asyncHandler(async (req, res) => {
 	await newUser.save();
 
 	res.json({
-		status: true,
+		status: 'Success',
 		message: 'User registered successfully',
 		user: {
 			username,
 			email,
 		},
+	});
+});
+
+// login
+const login = asyncHandler(async (req, res) => {
+	const { email, password } = req.body;
+	//validation
+	const user = await User.findOne({ email });
+	if (!user) {
+		res.status(401);
+		throw new Error('Invalid email or password');
+	}
+	//check if the password is correct
+	const isPasswordMatch = await bycrypt.compare(password, user?.hashedPassword);
+	if (!isPasswordMatch) {
+		res.status(401);
+		throw new Error('Invalid email or password');
+	}
+
+	//Generate token
+	//set token in cookie
+
+	//send response
+	res.json({
+		status: 'Success',
+		message: 'User logged in successfully',
 	});
 });
 

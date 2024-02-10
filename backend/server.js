@@ -1,8 +1,8 @@
 const express = require('express');
+require('dotenv').config();
 const usersRouter = require('./routes/usersRouter');
 const { errorHandler } = require('./middlewares/errorMiddleware');
 require('./utils/connectDB')();
-require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
