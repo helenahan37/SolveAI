@@ -54,3 +54,15 @@ export const logoutAPI = async () => {
 	);
 	return response?.data;
 };
+
+//* ==========Get UserProfile=========
+export const getUserProfileAPI = async () => {
+	const response = await axios.get(
+		'http://localhost:5000/api/users/profile',
+
+		{
+			withCredentials: true,
+		}
+	);
+	return response?.data;
+};

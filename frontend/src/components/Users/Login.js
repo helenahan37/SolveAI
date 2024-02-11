@@ -42,7 +42,7 @@ const Login = () => {
 			// Simulate login success and navigate to dashboard
 			setTimeout(() => {
 				navigate('/dashboard');
-			}, 5000);
+			}, 3000);
 		},
 	});
 

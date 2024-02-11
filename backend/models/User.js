@@ -21,11 +21,11 @@ const userSchema = new mongoose.Schema(
 			type: Boolean,
 			default: true,
 		},
-		tialPeriod: {
+		trialPeriod: {
 			type: Number,
 			default: 3,
 		},
-		tiralExpries: {
+		trialExpries: {
 			type: Date,
 		},
 		subscriptionPlan: {

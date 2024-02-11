@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useMutation } from '@tanstack/react-query';
 import { registerAPI } from '../../apis/user/usersAPI';
 import StatusMessage from '../Alert/statusMessage';
+import { useAuth } from '../../AuthContext/AuthContext';
 
 // Validation schema
 const validationSchema = Yup.object({
@@ -14,15 +15,16 @@ const validationSchema = Yup.object({
 });
 
 const Registration = () => {
-	//custom auth hook
-	// const { isAuthenticated, login } = useAuth();
+	//check user authentication
+	const { isAuthenticated, login } = useAuth();
 	const navigate = useNavigate();
-	//Redirect if a user is login
-	// useEffect(() => {
-	// 	if (isAuthenticated) {
-	// 		navigate('/dashboard');
-	// 	}
-	// }, [isAuthenticated]);
+
+	// Redirect if a user is login
+	useEffect(() => {
+		if (isAuthenticated) {
+			navigate('/dashboard');
+		}
+	}, [isAuthenticated]);
 
 	const mutation = useMutation({ mutationFn: registerAPI });
 	// Formik setup for form handling
@@ -35,18 +37,13 @@ const Registration = () => {
 		validationSchema: validationSchema,
 		onSubmit: (values) => {
 			//  handle the form submission
-			console.log('Form values', values);
 			mutation.mutate(values);
 
 			setTimeout(() => {
 				navigate('/login');
-			}, 3000);
+			}, 2000);
 		},
 	});
-	console.log(mutation.isSuccess);
-	console.log(mutation.isPending);
-	console.log(mutation.isError);
-	console.log(mutation.error);
 
 	return (
 		<div className="min-h-screen flex items-center justify-center bg-gray-900">

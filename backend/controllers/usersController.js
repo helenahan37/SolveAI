@@ -32,7 +32,7 @@ const register = asyncHandler(async (req, res) => {
 	});
 
 	//calcuate the trial end date
-	newUser.tiralExpries = new Date(new Date().getTime() + newUser.tialPeriod * 24 * 60 * 60 * 1000);
+	newUser.trialExpries = new Date(new Date().getTime() + newUser.trialPeriod * 24 * 60 * 60 * 1000);
 
 	// Save the user
 	await newUser.save();
