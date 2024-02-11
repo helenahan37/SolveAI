@@ -1,5 +1,6 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
+const cors = require('cors');
 const User = require('./models/User');
 const cron = require('node-cron');
 require('dotenv').config();
@@ -97,6 +98,13 @@ cron.schedule('0 0 1 * * *', async () => {
 app.use(express.json());
 //parse cookies
 app.use(cookieParser());
+
+//*===CORS===//
+const corsOptions = {
+	origin: 'http://localhost:3000',
+	credentials: true,
+};
+app.use(cors(corsOptions));
 
 //*===Routes===//
 app.use('/api/users', usersRouter);
