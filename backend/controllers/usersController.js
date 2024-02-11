@@ -108,9 +108,24 @@ const userProfile = asyncHandler(async (req, res) => {
 	}
 });
 
+//* Check user auth
+const checkAuth = asyncHandler(async (req, res, next) => {
+	const decode = jwt.verify(req.cookies.token, process.env.JWT_SECRET);
+	if (decode) {
+		res.json({
+			isAuthenticated: true,
+		});
+	} else {
+		res.json({
+			isAuthenticated: false,
+		});
+	}
+});
+
 module.exports = {
 	register,
 	login,
 	logout,
 	userProfile,
+	checkAuth,
 };
