@@ -31,7 +31,7 @@ const AIContentGenerator = () => {
 		}),
 		onSubmit: (values) => {
 			mutation.mutate(`Content: ${values.prompt}, ${values.tone}, ${values.category} generated successfully!`);
-			setGeneratedContent(`Generated content for prompt: ${mutation?.data}`);
+			setGeneratedContent(`${mutation?.data}`);
 		},
 	});
 	console.log(mutation);
