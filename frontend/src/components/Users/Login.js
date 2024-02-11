@@ -18,13 +18,14 @@ const Login = () => {
 	const { isAuthenticated, login } = useAuth();
 
 	const navigate = useNavigate();
-	//Redirect if a user is login
-	// useEffect(() => {
-	// 	if (isAuthenticated) {
-	// 		navigate('/dashboard');
-	// 	}
-	// }, [isAuthenticated]);
-	// //mutation
+
+	// Redirect if a user is login
+	useEffect(() => {
+		if (isAuthenticated) {
+			navigate('/dashboard');
+		}
+	}, [isAuthenticated]);
+
 	const mutation = useMutation({ mutationFn: loginAPI });
 	// Formik setup for form handling
 	const formik = useFormik({
