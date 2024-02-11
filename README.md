@@ -16,6 +16,6 @@ Using OpenAI text generation models
 
 ## Demo
 
-![Demo1](/Users/helenahan/Desktop/yoyo-solveAI/assets/Demo1.png)
+![Demo1](/assets/Demo1.png)
 
-![Demo2](/Users/helenahan/Desktop/yoyo-solveAI/assets/Demo2.png)
+![Demo2](/assets/Demo2.png)
