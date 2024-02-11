@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import StatusMessage from '../Alert/statusMessage';
 import { useMutation } from '@tanstack/react-query';
 import { loginAPI } from '../../apis/user/usersAPI';
+import { useAuth } from '../../AuthContext/AuthContext';
 
 // Validation schema using Yup
 const validationSchema = Yup.object({
@@ -13,7 +14,8 @@ const validationSchema = Yup.object({
 });
 
 const Login = () => {
-	//custom auth hook
+	//check user authentication
+	const { isAuthenticated, login } = useAuth();
 
 	const navigate = useNavigate();
 	//Redirect if a user is login
@@ -42,6 +44,13 @@ const Login = () => {
 			}, 5000);
 		},
 	});
+
+	//update userAuth state
+	useEffect(() => {
+		if (mutation.isSuccess) {
+			login();
+		}
+	}, [mutation.isSuccess]);
 
 	return (
 		<div className="min-h-screen bg-gray-900 flex items-center justify-center">
