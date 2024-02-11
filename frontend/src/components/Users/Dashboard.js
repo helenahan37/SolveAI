@@ -6,7 +6,6 @@ import StatusMessage from '../Alert/statusMessage';
 const Dashboard = () => {
 	//fetch user profile
 	const { isLoading, data, isError, error } = useQuery({ queryFn: getUserProfileAPI, queryKey: ['userProfile'] });
-	console.log(data);
 	//check if loading
 	if (isLoading) {
 		return <StatusMessage type="loading" message="Loading please wait..." />;
@@ -62,7 +61,7 @@ const Dashboard = () => {
 						<div>
 							<p className="mb-4">Current Plan: {data?.user?.subscriptionPlan}</p>
 							{data?.user?.subscriptionPlan === 'Trial' && (
-								<p className="border rounded w-full py-2 px-3 mb-4 text-gray-800">Trial: 5 request within 3 days</p>
+								<p className="border rounded w-full py-2 px-3 mb-4 text-gray-800">Trial: 100 request within 3 days</p>
 							)}
 
 							{data?.user?.subscriptionPlan === 'Free' && (

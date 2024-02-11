@@ -7,6 +7,7 @@ import PrivateNavbar from './components/Navbars/PrivateNavbar';
 import PublicNavbar from './components/Navbars/PublicNavbar';
 import { useAuth } from './AuthContext/AuthContext';
 import AuthRoute from './components/AuthRoute/AuthRouth';
+import AIContentGenerator from './components/AIContentGeneration/GenerateContent';
 
 export default function App() {
 	const { isAuthenticated } = useAuth();
@@ -24,6 +25,14 @@ export default function App() {
 						element={
 							<AuthRoute>
 								<Dashboard />
+							</AuthRoute>
+						}
+					/>
+					<Route
+						path="/generate-content"
+						element={
+							<AuthRoute>
+								<AIContentGenerator />
 							</AuthRoute>
 						}
 					/>
