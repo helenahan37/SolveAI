@@ -8,6 +8,8 @@ import PublicNavbar from './components/Navbars/PublicNavbar';
 import { useAuth } from './AuthContext/AuthContext';
 import AuthRoute from './components/AuthRoute/AuthRouth';
 import AIContentGenerator from './components/AIContentGeneration/GenerateContent';
+import PricingPlans from './components/Plan/PricingPlan';
+import FreePlanSubscription from './components/StripePayment/FreePlanSubscription';
 
 export default function App() {
 	const { isAuthenticated } = useAuth();
@@ -36,6 +38,8 @@ export default function App() {
 							</AuthRoute>
 						}
 					/>
+					<Route path="/plans" element={<PricingPlans />} />
+					<Route path="/free-plan" element={<FreePlanSubscription />} />
 				</Routes>
 			</BrowserRouter>
 		</>
