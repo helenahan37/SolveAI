@@ -30,11 +30,12 @@ const AIContentGenerator = () => {
 			category: Yup.string().required('Selecting a category is required'),
 		}),
 		onSubmit: (values) => {
-			mutation.mutate(`Content: ${values.prompt}, ${values.tone}, ${values.category} generated successfully!`);
+			// Simulate content generation based on form values
+			console.log(values);
+			mutation.mutate(`Generate a blog post based ${values.prompt}, ${values.category}, ${values.tone}`);
 			setGeneratedContent(`${mutation?.data}`);
 		},
 	});
-	console.log(mutation);
 	if (isLoading) {
 		return <StatusMessage type="loading" message="Loading please wait..." />;
 	} else if (isError) {
@@ -138,7 +139,7 @@ const AIContentGenerator = () => {
 					{generatedContent && (
 						<div className="mt-6 p-4 bg-gray-100 rounded-md">
 							<h3 className="text-lg font-semibold text-gray-800 mb-2">Generated Content:</h3>
-							<p className="text-gray-600">{generatedContent}</p>
+							<p className="text-gray-600">{mutation.data}</p>
 						</div>
 					)}
 				</div>
