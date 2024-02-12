@@ -54,6 +54,8 @@ export default function PricingPlans() {
 		//Navigate to free-plan payment page
 		if (plan?.id === 'Free') {
 			navigate('/free-plan');
+		} else {
+			navigate(`/check-out/${plan.id}?amount=${plan.amount}`);
 		}
 	};
 
