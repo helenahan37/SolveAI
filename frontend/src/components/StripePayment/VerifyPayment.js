@@ -4,6 +4,7 @@ import { FaCheckCircle, FaTimesCircle, FaSpinner } from 'react-icons/fa';
 import { useSearchParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { verifyPaymentAPI } from '../../apis/stripePayment/stripePayment';
+import ContentHistory from '../Users/ContentHistory';
 
 const VerifyPayment = () => {
 	//get payment params

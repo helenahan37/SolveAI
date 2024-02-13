@@ -1,21 +1,14 @@
 import React from 'react';
+import background1 from '../../assets/background1.jpg';
 import ai1 from '../../assets/ai-main.png';
-import blink from '../../assets/blink-sm.png';
 
 export default function HomeFeatures() {
 	return (
 		<>
-			<section className="relative py-12 md:py-24 lg:py-32 bg-gray-900 bg-body overflow-hidden">
-				<img
-					className="hidden sm:block absolute top-0 right-1/2 -mr-64 xl:mr-24 mt-12 h-20 animate-spinStar"
-					src={blink}
-					alt="Blink"
-				/>
-				<img
-					className="hidden sm:block absolute bottom-0 right-0 mb-64 mr-8 h-20 animate-spinStar"
-					src={blink}
-					alt="Blink"
-				/>
+			<section className="relative py-12 md:py-24 lg:py-32 bg-body overflow-hidden">
+				<img src={background1} alt=" ai" className="absolute inset-0 -z-10 h-full w-full object-cover" />
+				<div className="absolute inset-0 -z-10 bg-opacity-90"></div>
+
 				<div className="relative container mx-auto px-4">
 					<div className="flex flex-wrap items-center -mx-4">
 						<div className="w-full lg:w-2/5 xl:w-1/2 px-4 mb-8 lg:mb-0">

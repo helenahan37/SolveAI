@@ -12,6 +12,9 @@ import PricingPlans from './components/Plan/PricingPlan';
 import FreePlanSubscription from './components/StripePayment/FreePlanSubscription';
 import CheckoutForm from './components/StripePayment/CheckoutForm';
 import VerifyPayment from './components/StripePayment/VerifyPayment';
+import GenerationHistory from './components/Users/ContentHistory';
+import AppFeatures from './components/Features/Features';
+import AboutUs from './components/About/About';
 
 export default function App() {
 	const { isAuthenticated } = useAuth();
@@ -40,10 +43,46 @@ export default function App() {
 							</AuthRoute>
 						}
 					/>
+
+					<Route
+						path="/generate-history"
+						element={
+							<AuthRoute>
+								<GenerationHistory />
+							</AuthRoute>
+						}
+					/>
+
+					<Route
+						path="/free-plan"
+						element={
+							<AuthRoute>
+								<FreePlanSubscription />
+							</AuthRoute>
+						}
+					/>
+
+					<Route
+						path="check-out/:plan"
+						element={
+							<AuthRoute>
+								<CheckoutForm />
+							</AuthRoute>
+						}
+					/>
+
+					<Route
+						path="/success"
+						element={
+							<AuthRoute>
+								<VerifyPayment />
+							</AuthRoute>
+						}
+					/>
+
 					<Route path="/plans" element={<PricingPlans />} />
-					<Route path="/free-plan" element={<FreePlanSubscription />} />
-					<Route path="check-out/:plan" element={<CheckoutForm />} />
-					<Route path="/success" element={<VerifyPayment />} />
+					<Route path="/features" element={<AppFeatures />} />
+					<Route path="/about" element={<AboutUs />} />
 				</Routes>
 			</BrowserRouter>
 		</>

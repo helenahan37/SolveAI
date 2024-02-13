@@ -51,7 +51,7 @@ const Login = () => {
 		if (mutation.isSuccess) {
 			login();
 		}
-	}, [mutation.isSuccess]);
+	}, [mutation]);
 
 	return (
 		<div className="min-h-screen bg-gray-900 flex items-center justify-center">
