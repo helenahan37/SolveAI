@@ -11,6 +11,7 @@ import AIContentGenerator from './components/AIContentGeneration/GenerateContent
 import PricingPlans from './components/Plan/PricingPlan';
 import FreePlanSubscription from './components/StripePayment/FreePlanSubscription';
 import CheckoutForm from './components/StripePayment/CheckoutForm';
+import VerifyPayment from './components/StripePayment/VerifyPayment';
 
 export default function App() {
 	const { isAuthenticated } = useAuth();
@@ -42,6 +43,7 @@ export default function App() {
 					<Route path="/plans" element={<PricingPlans />} />
 					<Route path="/free-plan" element={<FreePlanSubscription />} />
 					<Route path="check-out/:plan" element={<CheckoutForm />} />
+					<Route path="/success" element={<VerifyPayment />} />
 				</Routes>
 			</BrowserRouter>
 		</>

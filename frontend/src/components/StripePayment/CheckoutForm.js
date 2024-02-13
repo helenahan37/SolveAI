@@ -58,7 +58,6 @@ const CheckoutForm = () => {
 					}
 				},
 				onError: (error) => {
-					// Handle error here, e.g., update UI to show error message
 					setErrorMessage(error.message || 'An error occurred');
 				},
 			});
@@ -66,6 +65,7 @@ const CheckoutForm = () => {
 			setErrorMessage(error.message);
 		}
 	};
+
 	return (
 		<div className="bg-gray-900 h-screen -mt-4 flex justify-center items-center">
 			<form onSubmit={handleSubmit} className="w-96 mx-auto my-4 p-6 bg-white rounded-lg shadow-md">

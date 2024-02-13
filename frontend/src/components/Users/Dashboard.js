@@ -50,7 +50,8 @@ const Dashboard = () => {
 							<p className="mb-4">Credit Used: {data?.user?.apiRequestCount}</p>
 							<p className="mb-4">Credit Remaining: {data?.user?.monthlyRequestCount - data?.user?.apiRequestCount}</p>
 							<p className="mb-4">
-								Next Billing Date: {data?.user?.nextBillingDate ? data?.user?.nextBillingDate : 'No Billing date'}
+								Next Billing Date:{' '}
+								{data?.user?.nextBillingDate ? new Date(data?.user?.nextBillingDate).toDateString() : 'No Billing date'}
 							</p>
 						</div>
 					</div>
@@ -107,8 +108,9 @@ const Dashboard = () => {
 					{/* History Section */}
 					<div className="mb-6 bg-white p-4 shadow rounded-lg col-span-1 md:col-span-2">
 						<h2 className="text-2xl font-bold text-gray-800 mb-5">Payment History</h2>
-						{data?.user?.paymentHistory?.length > 0 ? (
+						{data?.user?.payments?.length > 0 ? (
 							<ul className="divide-y divide-gray-200">
+								{/* Example History Item */}
 								{data?.user?.payments?.map((payment) => {
 									return (
 										<li className="py-4 hover:bg-gray-50 transition duration-150 ease-in-out">
@@ -119,12 +121,12 @@ const Dashboard = () => {
 												</div>
 												<div className="flex items-center">
 													<p
-														className={`text-sm font-semibold ${
-															payment?.status === 'succeeded' ? 'text-green-500' : 'text-orange-500'
+														className={`text-sm fonrt-semibold ${
+															payment?.status === 'succeeded' ? 'text-green-500' : 'text-organge-500'
 														}`}>
 														{payment?.status}
 													</p>
-													<p className="text-sm text-gray-700 ml-4">${payment?.amount}</p>
+													<p className="text-sm text-gray-700 ml-4">$ {payment?.amount}</p>
 												</div>
 											</div>
 										</li>
@@ -132,7 +134,7 @@ const Dashboard = () => {
 								})}
 							</ul>
 						) : (
-							<h1 className="text font-bold text-gray-500 mb-5">No Payment History Found</h1>
+							<h1>No Payment History</h1>
 						)}
 					</div>
 				</div>
