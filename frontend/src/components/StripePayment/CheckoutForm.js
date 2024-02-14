@@ -75,7 +75,7 @@ const CheckoutForm = () => {
 				backgroundSize: 'cover',
 				backgroundPosition: 'center',
 			}}>
-			<form onSubmit={handleSubmit} className=" m-4 p-12 bg-white rounded-lg shadow-md w-full sm:w-96">
+			<form onSubmit={handleSubmit} className="m-8 p-12  bg-white rounded-lg shadow-md mx-auto">
 				<div>
 					<PaymentElement />
 				</div>
