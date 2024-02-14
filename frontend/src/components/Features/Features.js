@@ -27,9 +27,13 @@ const features = [
 
 export default function AppFeatures() {
 	return (
-		<div className="relative isolate overflow-hidden py-24 h-screen w-full sm:py-32">
-			<img src={bg1} alt="Background" className="absolute inset-0 h-screen w-full -z-10 opacity-95 object-cover" />
-			<div className="absolute inset-0 -z-10 bg-black bg-opacity-50"></div>
+		<div
+			className="relative isolate overflow-hidden py-24 sm:py-32 bg-gray-900"
+			style={{
+				backgroundImage: `url(${bg1})`,
+				backgroundSize: 'cover',
+				backgroundPosition: 'center',
+			}}>
 			<div className="mx-auto max-w-7xl px-6 lg:px-8">
 				<div className="mx-auto max-w-2xl lg:text-center">
 					<h2 className="text-base font-semibold leading-7 text-indigo-400">AI-Powered Content Creation</h2>

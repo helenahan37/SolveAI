@@ -1,4 +1,4 @@
-# yoyo-solveAI
+# SolveAI
 
 An AI-content generator, utilize ChatGPT, Create Subscription-based SAAS with MERN and Stripe
 
@@ -16,6 +16,16 @@ Using OpenAI text generation models
 
 ## Demo
 
-![Demo1](/assets/Demo1.png)
+![homepage](/demo/home-page.png)
 
-![Demo2](/assets/Demo2.png)
+![aboutpage](/demo/about-page.png)
+
+![featurepage](/demo/feature-page.png)
+
+![pricingpage](/demo/pricing-page.png)
+
+![dashboard](/demo/dashboard-page.png)
+
+![checkout](/demo/checkout-page.png)
+
+![history](/demo/generation-history-page.png)

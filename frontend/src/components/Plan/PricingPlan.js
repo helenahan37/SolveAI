@@ -59,8 +59,13 @@ export default function PricingPlans() {
 	};
 
 	return (
-		<div className=" py-24  sm:py-32">
-			<img src={bg1} alt=" ai" className="absolute h-screen w-full inset-0 -z-10 object-cover" />
+		<div
+			className="relative isolate overflow-hidden py-24 sm:py-32 bg-gray-900"
+			style={{
+				backgroundImage: `url(${bg1})`,
+				backgroundSize: 'cover',
+				backgroundPosition: 'center',
+			}}>
 			<div className="mx-auto max-w-7xl px-6 lg:px-8">
 				<div className="mx-auto max-w-4xl text-center">
 					<h2 className="text-base font-semibold leading-7 text-indigo-400">Pricing</h2>

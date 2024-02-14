@@ -52,12 +52,8 @@ export default function PublicNavbar() {
 						<Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-gray-900 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-white/10">
 							<div className="flex items-center justify-between">
 								<a href="#" className="-m-1.5 p-1.5">
-									<span className="sr-only">Your Company</span>
-									<img
-										className="h-8 w-auto"
-										src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-										alt=""
-									/>
+									<span className="sr-only">SolveAI</span>
+									<img className="h-8 w-auto" src={logo} alt="" />
 								</a>
 								<button
 									type="button"
@@ -81,7 +77,7 @@ export default function PublicNavbar() {
 									</div>
 									<div className="py-6">
 										<Link
-											to="/"
+											to="/login"
 											className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-gray-800">
 											Log in
 										</Link>

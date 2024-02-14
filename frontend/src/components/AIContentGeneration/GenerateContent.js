@@ -30,7 +30,7 @@ const AIContentGenerator = () => {
 			category: Yup.string().required('Selecting a category is required'),
 		}),
 		onSubmit: (values) => {
-			mutation.mutate(`topic: ${values?.prompt}, tone: ${values?.tone}, category: ${values?.category}`);
+			mutation.mutate(`Topic: ${values?.prompt}, Tone: ${values?.tone}, Category: ${values?.category}`);
 			setGeneratedContent(`Generated content for prompt: ${values?.prompt}`);
 		},
 	});
@@ -41,8 +41,13 @@ const AIContentGenerator = () => {
 		return <StatusMessage type="error" message={error?.response?.data?.message} />;
 	} else {
 		return (
-			<div className="min-h-screen  flex justify-center items-center p-6">
-				<img src={generator} alt=" ai" className="absolute inset-0 -z-10 object-cover" />
+			<div
+				className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-900 flex justify-center items-center p-6"
+				style={{
+					backgroundImage: `url(${generator})`,
+					backgroundSize: 'cover',
+					backgroundPosition: 'center',
+				}}>
 				<div className="bg-white rounded-xl shadow-xl overflow-hidden max-w-2xl w-full p-6">
 					<h2 className="text-3xl font-extrabold text-gray-800 mb-6 text-center">AI Content Generator</h2>
 
@@ -100,6 +105,9 @@ const AIContentGenerator = () => {
 								<option value="formal">Formal</option>
 								<option value="informal">Informal</option>
 								<option value="humorous">Humorous</option>
+								<option value="inspirational">Inspirational</option>
+								<option value="friendly">Friendly</option>
+								<option value="casual">Casual</option>
 							</select>
 							{formik.touched.tone && formik.errors.tone && (
 								<div className="text-red-500 mt-1">{formik.errors.tone}</div>
@@ -119,6 +127,7 @@ const AIContentGenerator = () => {
 								<option value="technology">Technology</option>
 								<option value="health">Health</option>
 								<option value="business">Business</option>
+								<option value="animal">Animal</option>
 							</select>
 							{formik.touched.category && formik.errors.category && (
 								<div className="text-red-500 mt-1">{formik.errors.category}</div>

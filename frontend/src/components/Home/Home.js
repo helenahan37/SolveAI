@@ -1,6 +1,5 @@
 import HomeFeatures from './HomeFeatures';
 import FreeTrial from './FreeTrial';
-import background from '../../assets/background.jpg';
 import background1 from '../../assets/background1.jpg';
 import { Link } from 'react-router-dom';
 export default function Home() {

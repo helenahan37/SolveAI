@@ -3,20 +3,18 @@ import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { PlusIcon } from '@heroicons/react/20/solid';
 import { FiLogOut } from 'react-icons/fi';
-import { FaCreativeCommonsShare } from 'react-icons/fa6';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useMutation } from '@tanstack/react-query';
 import { logoutAPI } from '../../apis/user/usersAPI';
 import { useAuth } from '../../AuthContext/AuthContext';
 import logo from '../../assets/logo.png';
+import { getUserProfileAPI } from '../../apis/user/usersAPI';
+import { useQuery } from '@tanstack/react-query';
 
-const user = {
-	name: 'Tom Cook',
-	email: 'tom@example.com',
-};
 const navigation = [
 	{ name: 'Dashboard', href: '/dashboard', current: true },
 	{ name: 'Pricing', href: '/plans', current: true },
+	{ name: 'Generation History', href: '/generate-history', current: true },
 ];
 const userNavigation = [{ name: 'Sign out', href: '#' }];
 
@@ -27,6 +25,7 @@ function classNames(...classes) {
 export default function PrivateNavbar() {
 	//check user authentication
 	const { logout } = useAuth();
+	const { data } = useQuery({ queryFn: getUserProfileAPI, queryKey: ['userProfile'] });
 
 	//mutation
 	const mutation = useMutation({ mutationFn: logoutAPI });
@@ -144,8 +143,8 @@ export default function PrivateNavbar() {
 						<div className="border-t border-gray-700 pb-3 pt-4">
 							<div className="flex items-center px-5 sm:px-6">
 								<div className="ml-3">
-									<div className="text-base font-medium text-white">{user.name}</div>
-									<div className="text-sm font-medium text-gray-400">{user.email}</div>
+									<div className="text-base font-medium text-white">{data?.user.username}</div>
+									<div className="text-sm font-medium text-gray-400">{data?.user.email}</div>
 								</div>
 							</div>
 							<div className="mt-3 space-y-1 px-2 sm:px-3">

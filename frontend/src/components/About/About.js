@@ -1,6 +1,6 @@
 import React from 'react';
 import { UserPlusIcon, ChartBarIcon, CogIcon } from '@heroicons/react/20/solid';
-import background from '../../assets/background.jpg';
+import about from '../../assets/about.jpg';
 
 const cards = [
 	{
@@ -25,8 +25,13 @@ const cards = [
 
 export default function AboutUs() {
 	return (
-		<div className="relative isolate overflow-hidden py-24  h-screen w-full sm:py-32 ">
-			<img src={background} alt=" ai" className="absolute inset-0 -z-10  object-cover" />
+		<div
+			className="relative isolate overflow-hidden py-24 sm:py-32 bg-gray-900"
+			style={{
+				backgroundImage: `url(${about})`,
+				backgroundSize: 'cover',
+				backgroundPosition: 'center',
+			}}>
 			<div className="absolute inset-0 -z-10 bg-opacity-90"></div>
 			<div className="mx-auto max-w-7xl px-6 lg:px-8">
 				<div className="mx-auto max-w-2xl lg:mx-0">

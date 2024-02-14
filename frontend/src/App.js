@@ -72,18 +72,10 @@ export default function App() {
 						}
 					/>
 
-					<Route
-						path="/success"
-						element={
-							<AuthRoute>
-								<VerifyPayment />
-							</AuthRoute>
-						}
-					/>
-
 					<Route path="/plans" element={<PricingPlans />} />
 					<Route path="/features" element={<AppFeatures />} />
 					<Route path="/about" element={<AboutUs />} />
+					<Route path="/success" element={<VerifyPayment />} />
 				</Routes>
 				<Footer />
 			</BrowserRouter>

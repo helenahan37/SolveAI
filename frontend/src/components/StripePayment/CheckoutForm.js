@@ -4,6 +4,7 @@ import { useParams, useSearchParams } from 'react-router-dom';
 import { createPaymentIntentAPI } from '../../apis/stripePayment/stripePayment';
 import { useMutation } from '@tanstack/react-query';
 import StatusMessage from '../Alert/statusMessage';
+import payment from '../../assets/payment.jpg';
 
 const CheckoutForm = () => {
 	//get payment params
@@ -67,9 +68,15 @@ const CheckoutForm = () => {
 	};
 
 	return (
-		<div className="bg-gray-900 h-screen -mt-4 flex justify-center items-center">
-			<form onSubmit={handleSubmit} className="w-96 mx-auto my-4 p-6 bg-white rounded-lg shadow-md">
-				<div className="mb-4">
+		<div
+			className="h-screen -mt-4 flex justify-center items-center bg-gray-900"
+			style={{
+				backgroundImage: `url(${payment})`,
+				backgroundSize: 'cover',
+				backgroundPosition: 'center',
+			}}>
+			<form onSubmit={handleSubmit} className=" m-4 p-12 bg-white rounded-lg shadow-md w-full sm:w-96">
+				<div>
 					<PaymentElement />
 				</div>
 				{/* display loading */}
