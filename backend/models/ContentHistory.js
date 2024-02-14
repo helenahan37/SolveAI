@@ -11,6 +11,10 @@ const historySchema = new mongoose.Schema(
 			type: String,
 			required: true,
 		},
+		prompt: {
+			type: String,
+			required: true,
+		},
 	},
 	{
 		timestamps: true,

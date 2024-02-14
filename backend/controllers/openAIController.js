@@ -5,7 +5,7 @@ const ContentHistory = require('../models/ContentHistory');
 
 //* OpenAI Controller
 const openAIController = asyncHandler(async (req, res) => {
-	const { prompt } = req.body;
+	const { prompt, tone, category } = req.body;
 
 	try {
 		const response = await axios.post(
@@ -13,7 +13,7 @@ const openAIController = asyncHandler(async (req, res) => {
 			{
 				model: 'gpt-3.5-turbo-instruct',
 				prompt,
-				max_tokens: 10,
+				max_tokens: 100,
 			},
 			{
 				headers: {
@@ -29,9 +29,12 @@ const openAIController = asyncHandler(async (req, res) => {
 		const newContent = await ContentHistory.create({
 			user: req.user._id,
 			content,
+			prompt,
+			tone,
+			category,
 		});
 		//send response
-		res.status(200).json(content);
+		res.status(200).json({ content, prompt, tone, category });
 		// push content history into user
 		const user = await User.findById(req?.user?._id);
 		user.contentHistory.push(newContent?._id);
