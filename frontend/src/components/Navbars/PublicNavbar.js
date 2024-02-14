@@ -3,6 +3,7 @@ import { Dialog } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { FaCreativeCommonsShare } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
+import logo from '../../assets/logo.png';
 const navigation = [
 	{ name: 'Home', href: '/' },
 	{ name: 'Features', href: '/features' },
@@ -15,13 +16,13 @@ export default function PublicNavbar() {
 
 	return (
 		<>
-			<div className="bg-gray-900">
+			<div className="bg-gray-800 border-b border-gray-700 shadow-md">
 				<header className="absolute inset-x-0 top-0 z-50">
 					<nav className="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
 						<div className="flex lg:flex-1">
 							{/* Logo */}
-							<Link to="/" className="text-white">
-								<FaCreativeCommonsShare className="h-10 w-10" />
+							<Link to="/">
+								<img src={logo} alt="Logo" p-4 style={{ height: '70px', width: '100px' }} />
 							</Link>
 						</div>
 						<div className="flex lg:hidden">

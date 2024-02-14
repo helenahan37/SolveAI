@@ -59,8 +59,8 @@ export default function PricingPlans() {
 	};
 
 	return (
-		<div className=" py-24 w-full h-screen sm:py-32">
-			<img src={bg1} alt=" ai" className="absolute inset-0 -z-10 w-full h-screen object-cover" />
+		<div className=" py-24  sm:py-32">
+			<img src={bg1} alt=" ai" className="absolute h-screen w-full inset-0 -z-10 object-cover" />
 			<div className="mx-auto max-w-7xl px-6 lg:px-8">
 				<div className="mx-auto max-w-4xl text-center">
 					<h2 className="text-base font-semibold leading-7 text-indigo-400">Pricing</h2>
@@ -77,14 +77,14 @@ export default function PricingPlans() {
 						<div
 							key={tier.id}
 							className={classNames(
-								tier.mostPopular ? 'bg-white/5 ring-2 ring-indigo-500' : 'ring-1 ring-white/10',
-								'rounded-3xl p-8 xl:p-10'
+								tier.mostPopular ? 'bg-white/5 ring-2 ring-indigo-500' : 'ring-2 ring-white/30',
+								'rounded-3xl p-8 xl:p-10 transition-transform duration-300 ease-in-out cursor-pointer hover:scale-110'
 								//  selected plan
 							)}
 							// handleClick=
 							onClick={() => handleSelectedPlan(tier)}>
 							<div className="flex items-center justify-between gap-x-4">
-								<h3 id={tier.id} className="text-lg font-semibold leading-8 text-white">
+								<h3 id={tier.id} className="text-lg font-semibold leading-8 text-white ">
 									{tier.name}
 								</h3>
 								{tier.mostPopular ? (

@@ -8,6 +8,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useMutation } from '@tanstack/react-query';
 import { logoutAPI } from '../../apis/user/usersAPI';
 import { useAuth } from '../../AuthContext/AuthContext';
+import logo from '../../assets/logo.png';
 
 const user = {
 	name: 'Tom Cook',
@@ -36,7 +37,7 @@ export default function PrivateNavbar() {
 	};
 
 	return (
-		<Disclosure as="nav" className="bg-gray-900">
+		<Disclosure as="nav" className="bg-gray-900 border-b  border-black shadow-md">
 			{({ open }) => (
 				<>
 					<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -54,10 +55,10 @@ export default function PrivateNavbar() {
 										)}
 									</Disclosure.Button>
 								</div>
-								<div className="flex flex-shrink-0 items-center">
+								<div className="flex flex-shrink-0 m-2 items-center">
 									{/* logo */}
-									<Link to="/" className="text-white">
-										<FaCreativeCommonsShare className="h-10 w-10" />
+									<Link to="/">
+										<img src={logo} alt="Logo" p-4 style={{ height: '60px', width: '90px' }} />
 									</Link>
 								</div>
 								<div className="hidden md:ml-6 md:flex md:items-center md:space-x-4">

@@ -4,6 +4,7 @@ import { getUserProfileAPI } from '../../apis/user/usersAPI';
 import { useQuery } from '@tanstack/react-query';
 import StatusMessage from '../Alert/statusMessage';
 import { Link } from 'react-router-dom';
+import history from '../../assets/history.jpg';
 
 const GenerationHistory = () => {
 	const { isLoading, data, isError, error } = useQuery({ queryFn: getUserProfileAPI, queryKey: ['userProfile'] });
@@ -14,9 +15,10 @@ const GenerationHistory = () => {
 		return <StatusMessage type="error" message={error?.response?.data?.message} />;
 	} else {
 		return (
-			<div className="bg-gray-100 py-12">
+			<div className="h-fullscreen py-12">
+				<img src={history} alt=" ai" className="absolute inset-0 -z-10 object-cover" />
 				<div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-					<h2 className="text-3xl font-extrabold text-gray-800 text-center mb-6">Content Generation History</h2>
+					<h2 className="text-3xl font-extrabold text-white text-center mb-6">Content Generation History</h2>
 					<Link
 						to="/generate-content"
 						className="mb-4 w-72 bg-blue-500 text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-600 flex items-center">

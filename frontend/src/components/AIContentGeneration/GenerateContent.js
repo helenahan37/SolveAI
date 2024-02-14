@@ -7,6 +7,7 @@ import { getUserProfileAPI } from '../../apis/user/usersAPI';
 import StatusMessage from '../Alert/statusMessage';
 import { contentGenerateAPI } from '../../apis/chatGPT/chatGPT';
 import { useMutation } from '@tanstack/react-query';
+import generator from '../../assets/generator.png';
 
 const AIContentGenerator = () => {
 	const [generatedContent, setGeneratedContent] = useState('');
@@ -42,7 +43,8 @@ const AIContentGenerator = () => {
 		return <StatusMessage type="error" message={error?.response?.data?.message} />;
 	} else {
 		return (
-			<div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-900 flex justify-center items-center p-6">
+			<div className="min-h-screen  flex justify-center items-center p-6">
+				<img src={generator} alt=" ai" className="absolute inset-0 -z-10 object-cover" />
 				<div className="bg-white rounded-xl shadow-xl overflow-hidden max-w-2xl w-full p-6">
 					<h2 className="text-3xl font-extrabold text-gray-800 mb-6 text-center">AI Content Generator</h2>
 

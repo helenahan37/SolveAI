@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Registration from './components/Users/Register';
 import Home from './components/Home/Home';
+import Footer from './components/Footer/Footer';
 import Login from './components/Users/Login';
 import Dashboard from './components/Users/Dashboard';
 import PrivateNavbar from './components/Navbars/PrivateNavbar';
@@ -84,6 +85,7 @@ export default function App() {
 					<Route path="/features" element={<AppFeatures />} />
 					<Route path="/about" element={<AboutUs />} />
 				</Routes>
+				<Footer />
 			</BrowserRouter>
 		</>
 	);
