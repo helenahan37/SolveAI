@@ -1,5 +1,5 @@
 const User = require('../models/User');
-const bycrypt = require('bcryptjs');
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const asyncHandler = require('express-async-handler');
 
@@ -57,7 +57,7 @@ const login = asyncHandler(async (req, res) => {
 		throw new Error('Invalid email or password');
 	}
 	//check if the password is correct
-	const isPasswordMatch = await bycrypt.compare(password, user?.password);
+	const isPasswordMatch = await bcrypt.compare(password, user?.password);
 	if (!isPasswordMatch) {
 		res.status(401);
 		throw new Error('Invalid email or password');
