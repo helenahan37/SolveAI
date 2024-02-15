@@ -1,9 +1,10 @@
 const express = require('express');
+require('dotenv').config();
+const app = express();
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const User = require('./models/User');
 const cron = require('node-cron');
-require('dotenv').config();
 
 const { errorHandler } = require('./middlewares/errorMiddleware');
 const stripeRouter = require('./routes/stripeRouter');
@@ -11,7 +12,6 @@ const usersRouter = require('./routes/usersRouter');
 const openAIRouter = require('./routes/openAIRouter');
 require('./utils/connectDB')();
 
-const app = express();
 const PORT = process.env.PORT || 5000;
 
 //*===Cron Jobs===//
