@@ -101,7 +101,7 @@ app.use(cookieParser());
 
 //*===CORS===//
 const corsOptions = {
-	origin: 'solveai.netlify.app' || 'http://localhost:3000',
+	origin: 'https://solveai.netlify.app' || 'http://localhost:3000',
 	credentials: true,
 };
 app.use(cors(corsOptions));
