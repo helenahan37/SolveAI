@@ -2,6 +2,8 @@
 
 An AI-content generator, utilize ChatGPT, Create Subscription-based SAAS with MERN and Stripe
 
+[Deployed Link]: https://solveai.netlify.app/	"Deployed Link"
+
 Backend: Node.js
 
 OpenAI: chatGPT
