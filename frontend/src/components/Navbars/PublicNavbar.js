@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Dialog } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
-import { FaCreativeCommonsShare } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 const navigation = [
@@ -51,7 +50,7 @@ export default function PublicNavbar() {
 						<div className="fixed inset-0 z-50" />
 						<Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-gray-900 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-white/10">
 							<div className="flex items-center justify-between">
-								<a href="#" className="-m-1.5 p-1.5">
+								<a href="/" className="-m-1.5 p-1.5">
 									<span className="sr-only">SolveAI</span>
 									<img className="h-8 w-auto" src={logo} alt="" />
 								</a>

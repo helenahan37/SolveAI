@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import HomeFeatures from './HomeFeatures';
 import FreeTrial from './FreeTrial';
 import background1 from '../../assets/background1.jpg';

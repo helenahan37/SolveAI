@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-redundant-roles */
 const navigation = {
 	solutions: [
 		{ name: 'Marketing', href: '#' },

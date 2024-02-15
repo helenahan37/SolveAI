@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-redundant-roles */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { CheckIcon } from '@heroicons/react/20/solid';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
