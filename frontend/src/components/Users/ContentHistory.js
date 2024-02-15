@@ -20,9 +20,6 @@ const GenerationHistory = () => {
 		}));
 	};
 
-	//handle delete content
-	const [contentList, setContentList] = useState(data?.user?.contentHistory || []);
-
 	const handleDelete = (index) => {
 		setContentList((prevList) => prevList.filter((_, i) => i !== index));
 	};
@@ -53,7 +50,7 @@ const GenerationHistory = () => {
 							<h1>No Content History</h1>
 						) : (
 							<ul className="divide-y divide-gray-200">
-								{contentList?.map((content, index) => {
+								{data?.user?.contentHistory?.map((content, index) => {
 									return (
 										<li className="px-6 py-4 flex items-center justify-between space-x-4">
 											<div className="flex-1 min-w-0">
