@@ -51,7 +51,7 @@ const CheckoutForm = () => {
 						elements,
 						clientSecret: clientSecret,
 						confirmParams: {
-							return_url: `${baseURL}/success`,
+							return_url: `${window.location.origin}/success`,
 						},
 					});
 
