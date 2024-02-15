@@ -1,9 +1,10 @@
 import axios from 'axios';
+import baseURL from '../../utils';
 
 //* =============User Registration=========
 export const registerAPI = async (userData) => {
 	const response = await axios.post(
-		'http://localhost:5000/api/users/register',
+		`${baseURL}/users/register`,
 		{
 			username: userData?.username,
 			email: userData?.email,
@@ -19,7 +20,7 @@ export const registerAPI = async (userData) => {
 //* =============User login=========
 export const loginAPI = async (userData) => {
 	const response = await axios.post(
-		'http://localhost:5000/api/users/login',
+		`${baseURL}/users/login`,
 		{
 			email: userData?.email,
 			password: userData?.password,
@@ -34,7 +35,7 @@ export const loginAPI = async (userData) => {
 //* =============Check Auth=========
 export const checkAuthAPI = async () => {
 	const response = await axios.get(
-		'http://localhost:5000/api/users/auth/check',
+		`${baseURL}/users/auth/check`,
 
 		{
 			withCredentials: true,
@@ -46,7 +47,7 @@ export const checkAuthAPI = async () => {
 //* =============User logout=========
 export const logoutAPI = async () => {
 	const response = await axios.post(
-		'http://localhost:5000/api/users/logout',
+		`${baseURL}/users/logout`,
 		{},
 		{
 			withCredentials: true,
@@ -58,7 +59,7 @@ export const logoutAPI = async () => {
 //* ==========Get UserProfile=========
 export const getUserProfileAPI = async () => {
 	const response = await axios.get(
-		'http://localhost:5000/api/users/profile',
+		`${baseURL}/users/profile`,
 
 		{
 			withCredentials: true,

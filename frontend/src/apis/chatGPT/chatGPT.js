@@ -1,9 +1,10 @@
 import axios from 'axios';
+import baseURL from '../../utils';
 
 //* =========Content Generation============
 export const contentGenerateAPI = async (inputPrompt) => {
 	const response = await axios.post(
-		'http://localhost:5000/api/openai/generate-content',
+		`${baseURL}/openai/generate-content`,
 		{ prompt: inputPrompt },
 		{
 			withCredentials: true,
