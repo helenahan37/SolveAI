@@ -46,7 +46,7 @@ export default function App() {
 					/>
 
 					<Route
-						path="/generate-history"
+						path="/history"
 						element={
 							<AuthRoute>
 								<GenerationHistory />

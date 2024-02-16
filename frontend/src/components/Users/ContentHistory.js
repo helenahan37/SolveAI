@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 import { getUserProfileAPI } from '../../apis/user/usersAPI';
 import { FaTrashAlt, FaEye, FaPlusSquare } from 'react-icons/fa';
 import { useQuery } from '@tanstack/react-query';
@@ -20,10 +19,6 @@ const GenerationHistory = () => {
 		}));
 	};
 
-	const handleDelete = (index) => {
-		setContentList((prevList) => prevList.filter((_, i) => i !== index));
-	};
-
 	if (isLoading) {
 		return <StatusMessage type="loading" message="Loading please wait..." />;
 	} else if (isError) {
@@ -38,7 +33,7 @@ const GenerationHistory = () => {
 					backgroundPosition: 'center',
 				}}>
 				<div className="max-w-6xl h-screen mx-auto px-4 sm:px-6 lg:px-8">
-					<h2 className="text-3xl font-extrabold text-white text-center mt-3 mb-6">Content Generation History</h2>
+					<h2 className="text-3xl font-extrabold text-white text-center mt-3 mb-6">Generation History</h2>
 					<Link
 						to="/generate-content"
 						className="mb-4 w-48 bg-blue-500 text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-600 flex items-center">
@@ -65,10 +60,10 @@ const GenerationHistory = () => {
 													onClick={() => handleDisplayContent(index)}
 													className="text-green-500 hover:text-green-600 cursor-pointer"
 												/>
-												<FaTrashAlt
+												{/* <FaTrashAlt
 													onClick={() => handleDelete(index)}
 													className="text-red-500 hover:text-red-600 cursor-pointer"
-												/>
+												/> */}
 											</div>
 										</li>
 									);

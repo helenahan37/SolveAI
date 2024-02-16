@@ -141,7 +141,7 @@ const AIContentGenerator = () => {
 							Generate Content
 						</button>
 						{/* Link to view history */}
-						<Link to="/generate-history">View history</Link>
+						<Link to="/history">View history</Link>
 					</form>
 
 					{/* Display generated content */}
