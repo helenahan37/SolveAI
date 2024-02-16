@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Dialog } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import { Link } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 
 const navigation = [
@@ -68,18 +69,18 @@ export default function PublicNavbar() {
 										{navigation.map((item) => (
 											<a
 												key={item.name}
-												to={item.href}
+												href={item.href}
 												className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-800">
 												{item.name}
 											</a>
 										))}
 									</div>
 									<div className="py-6">
-										<a
-											to="/login"
+										<Link
+											href="/login"
 											className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-gray-800">
 											Log in
-										</a>
+										</Link>
 									</div>
 								</div>
 							</div>
