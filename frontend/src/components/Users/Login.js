@@ -8,25 +8,23 @@ import { useMutation } from '@tanstack/react-query';
 import { loginAPI } from '../../apis/user/usersAPI';
 import { useAuth } from '../../AuthContext/AuthContext';
 
-// Validation schema using Yup
 const validationSchema = Yup.object({
 	email: Yup.string().email('Enter a valid email').required('Email is required'),
 	password: Yup.string().required('Password is required'),
 });
 
 const Login = () => {
-	//check user authentication
+	//custom auth hook
 	const { isAuthenticated, login } = useAuth();
 
 	const navigate = useNavigate();
-
-	// Redirect if a user is login
+	//Redirect if a user is login
 	useEffect(() => {
 		if (isAuthenticated) {
 			navigate('/dashboard');
 		}
 	}, [isAuthenticated]);
-
+	//mutation
 	const mutation = useMutation({ mutationFn: loginAPI });
 	// Formik setup for form handling
 	const formik = useFormik({
@@ -43,17 +41,15 @@ const Login = () => {
 			// Simulate login success and navigate to dashboard
 			setTimeout(() => {
 				navigate('/dashboard');
-			}, 3000);
+			}, 5000);
 		},
 	});
-
-	//update userAuth state
+	//Update is authenticated
 	useEffect(() => {
-		if (mutation) {
+		if (mutation.isSuccess) {
 			login();
 		}
 	}, [mutation.isSuccess]);
-
 	return (
 		<div className="min-h-screen bg-gray-900 flex items-center justify-center">
 			<div className="max-w-md w-full bg-white rounded-lg shadow-md p-8 m-4">
