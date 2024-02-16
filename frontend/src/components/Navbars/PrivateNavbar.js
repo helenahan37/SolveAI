@@ -3,30 +3,29 @@ import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { PlusIcon } from '@heroicons/react/20/solid';
 import { FiLogOut } from 'react-icons/fi';
+import { FaCreativeCommonsShare } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@tanstack/react-query';
 import { logoutAPI } from '../../apis/user/usersAPI';
 import { useAuth } from '../../AuthContext/AuthContext';
-import logo from '../../assets/logo.png';
-import { getUserProfileAPI } from '../../apis/user/usersAPI';
-import { useQuery } from '@tanstack/react-query';
 
+const user = {
+	name: 'Tom Cook',
+	email: 'tom@example.com',
+};
 const navigation = [
 	{ name: 'Dashboard', href: '/dashboard', current: true },
 	{ name: 'Pricing', href: '/plans', current: true },
-	{ name: 'Generation History', href: '/history', current: true },
 ];
-const userNavigation = [{ name: 'Sign out', href: '/' }];
+const userNavigation = [{ name: 'Sign out', href: '#' }];
 
 function classNames(...classes) {
 	return classes.filter(Boolean).join(' ');
 }
 
 export default function PrivateNavbar() {
-	//check user authentication
+	//auth custom hook
 	const { logout } = useAuth();
-	const { data } = useQuery({ queryFn: getUserProfileAPI, queryKey: ['userProfile'] });
-
 	//mutation
 	const mutation = useMutation({ mutationFn: logoutAPI });
 	//handle logout
@@ -36,7 +35,7 @@ export default function PrivateNavbar() {
 	};
 
 	return (
-		<Disclosure as="nav" className="bg-gray-900 border-b  border-black shadow-md">
+		<Disclosure as="nav" className="bg-gray-900">
 			{({ open }) => (
 				<>
 					<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -54,10 +53,10 @@ export default function PrivateNavbar() {
 										)}
 									</Disclosure.Button>
 								</div>
-								<div className="flex flex-shrink-0 m-2 items-center">
+								<div className="flex flex-shrink-0 items-center">
 									{/* logo */}
-									<Link to="/">
-										<img src={logo} alt="Logo" p-4 style={{ height: '60px', width: '90px' }} />
+									<Link to="/" className="text-white">
+										<FaCreativeCommonsShare className="h-10 w-10" />
 									</Link>
 								</div>
 								<div className="hidden md:ml-6 md:flex md:items-center md:space-x-4">
@@ -83,7 +82,7 @@ export default function PrivateNavbar() {
 										<PlusIcon className="-ml-0.5 h-5 w-5" aria-hidden="true" />
 										Generate content
 									</Link>
-
+									{/* Logout */}
 									<button
 										onClick={handleLogout}
 										type="button"
@@ -127,23 +126,24 @@ export default function PrivateNavbar() {
 					<Disclosure.Panel className="md:hidden">
 						<div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
 							{navigation.map((item) => (
-								<a
+								<Disclosure.Button
 									key={item.name}
+									as="a"
 									href={item.href}
 									className={classNames(
 										item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-										'block rounded-md px-3 py-2 text-sm font-medium'
+										'block rounded-md px-3 py-2 text-base font-medium'
 									)}
 									aria-current={item.current ? 'page' : undefined}>
 									{item.name}
-								</a>
+								</Disclosure.Button>
 							))}
 						</div>
 						<div className="border-t border-gray-700 pb-3 pt-4">
 							<div className="flex items-center px-5 sm:px-6">
 								<div className="ml-3">
-									<div className="text-base font-medium text-white">{data?.user.username}</div>
-									<div className="text-sm font-medium text-gray-400">{data?.user.email}</div>
+									<div className="text-base font-medium text-white">{user.name}</div>
+									<div className="text-sm font-medium text-gray-400">{user.email}</div>
 								</div>
 							</div>
 							<div className="mt-3 space-y-1 px-2 sm:px-3">
