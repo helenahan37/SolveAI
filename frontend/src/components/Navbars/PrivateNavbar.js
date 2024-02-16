@@ -16,7 +16,7 @@ const navigation = [
 	{ name: 'Pricing', href: '/plans', current: true },
 	{ name: 'Generation History', href: '/history', current: true },
 ];
-const userNavigation = [{ name: 'Sign out', href: '#' }];
+const userNavigation = [{ name: 'Sign out', href: '/' }];
 
 function classNames(...classes) {
 	return classes.filter(Boolean).join(' ');
@@ -105,14 +105,14 @@ export default function PrivateNavbar() {
 												{userNavigation.map((item) => (
 													<Menu.Item key={item.name}>
 														{({ active }) => (
-															<a
+															<Link
 																href={item.href}
 																className={classNames(
 																	active ? 'bg-gray-100' : '',
 																	'block px-4 py-2 text-sm text-gray-700'
 																)}>
 																{item.name}
-															</a>
+															</Link>
 														)}
 													</Menu.Item>
 												))}
