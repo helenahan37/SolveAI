@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Dialog } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
-import { Link } from 'react-router-dom';
 import logo from '../../assets/logo.png';
+
 const navigation = [
 	{ name: 'Home', href: '/' },
 	{ name: 'Features', href: '/features' },
@@ -20,9 +20,9 @@ export default function PublicNavbar() {
 					<nav className="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
 						<div className="flex lg:flex-1">
 							{/* Logo */}
-							<Link to="/">
+							<a href="/">
 								<img src={logo} alt="Logo" p-4 style={{ height: '70px', width: '100px' }} />
-							</Link>
+							</a>
 						</div>
 						<div className="flex lg:hidden">
 							<button
@@ -35,15 +35,15 @@ export default function PublicNavbar() {
 						</div>
 						<div className="hidden lg:flex lg:gap-x-12">
 							{navigation.map((item) => (
-								<Link key={item.name} to={item.href} className="text-sm font-semibold leading-6 text-white">
+								<a key={item.name} href={item.href} className="text-sm font-semibold leading-6 text-white">
 									{item.name}
-								</Link>
+								</a>
 							))}
 						</div>
 						<div className="hidden lg:flex lg:flex-1 lg:justify-end">
-							<Link to="/login" className="text-sm font-semibold leading-6 text-white">
+							<a href="/login" className="text-sm font-semibold leading-6 text-white">
 								Log in <span aria-hidden="true">&rarr;</span>
-							</Link>
+							</a>
 						</div>
 					</nav>
 					<Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
@@ -66,20 +66,20 @@ export default function PublicNavbar() {
 								<div className="-my-6 divide-y divide-gray-500/25">
 									<div className="space-y-2 py-6">
 										{navigation.map((item) => (
-											<Link
+											<a
 												key={item.name}
-												to={item.href}
+												href={item.href}
 												className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-800">
 												{item.name}
-											</Link>
+											</a>
 										))}
 									</div>
 									<div className="py-6">
-										<Link
-											to="/login"
+										<a
+											href="/login"
 											className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-gray-800">
 											Log in
-										</Link>
+										</a>
 									</div>
 								</div>
 							</div>

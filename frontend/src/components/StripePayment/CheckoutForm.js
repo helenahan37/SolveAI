@@ -5,7 +5,6 @@ import { createPaymentIntentAPI } from '../../apis/stripePayment/stripePayment';
 import { useMutation } from '@tanstack/react-query';
 import StatusMessage from '../Alert/statusMessage';
 import payment from '../../assets/payment.jpg';
-import baseURL from '../../utils';
 
 const CheckoutForm = () => {
 	//get payment params

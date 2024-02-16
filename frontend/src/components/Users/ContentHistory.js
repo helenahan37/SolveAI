@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { getUserProfileAPI } from '../../apis/user/usersAPI';
 import { FaTrashAlt, FaEye, FaPlusSquare } from 'react-icons/fa';
-import { useQuery, QueryClient, useMutation } from '@tanstack/react-query';
+import { useQuery, useMutation } from '@tanstack/react-query';
 import StatusMessage from '../Alert/statusMessage';
 import { Link } from 'react-router-dom';
 import history from '../../assets/history.jpg';

@@ -16,10 +16,10 @@ const validationSchema = Yup.object({
 
 const Registration = () => {
 	//check user authentication
-	const { isAuthenticated, login } = useAuth();
+	const { isAuthenticated } = useAuth();
 	const navigate = useNavigate();
 
-	// Redirect if a user is login
+	// Redirect if a user is authenticated
 	useEffect(() => {
 		if (isAuthenticated) {
 			navigate('/dashboard');
