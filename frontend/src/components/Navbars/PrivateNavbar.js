@@ -16,7 +16,7 @@ const navigation = [
 	{ name: 'Pricing', href: '/plans', current: true },
 	{ name: 'Generation History', href: '/history', current: true },
 ];
-const userNavigation = [{ name: 'Sign out', href: '#' }];
+const userNavigation = [{ name: 'Sign out', href: '/' }];
 
 function classNames(...classes) {
 	return classes.filter(Boolean).join(' ');
