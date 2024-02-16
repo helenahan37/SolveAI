@@ -34,4 +34,4 @@ Using OpenAI text generation models
 
 ![checkout](/demo/checkout-page.png)
 
-![history](/demo/generation-history-page.png)
+![history](/demo/generator-page.png)
