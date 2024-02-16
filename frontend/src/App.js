@@ -64,7 +64,7 @@ export default function App() {
 					/>
 
 					<Route
-						path="check-out/:plan"
+						path="/check-out/:plan"
 						element={
 							<AuthRoute>
 								<CheckoutForm />
