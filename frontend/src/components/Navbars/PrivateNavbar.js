@@ -62,16 +62,16 @@ export default function PrivateNavbar() {
 								</div>
 								<div className="hidden md:ml-6 md:flex md:items-center md:space-x-4">
 									{navigation.map((item) => (
-										<Link
+										<a
 											key={item.name}
-											to={item.href}
+											href={item.href}
 											className={classNames(
 												item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
 												'rounded-md px-3 py-2 text-sm font-medium'
 											)}
 											aria-current={item.current ? 'page' : undefined}>
 											{item.name}
-										</Link>
+										</a>
 									))}
 								</div>
 							</div>
