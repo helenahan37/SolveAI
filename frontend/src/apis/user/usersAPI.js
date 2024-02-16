@@ -67,3 +67,16 @@ export const getUserProfileAPI = async () => {
 	);
 	return response?.data;
 };
+
+//* ==========Delete ContentHistory=========
+
+export const deleteContentAPI = async (contentId) => {
+	const response = await axios.delete(
+		`${baseURL}/users/content-delete/${contentId}`,
+
+		{
+			withCredentials: true,
+		}
+	);
+	return response?.data;
+};

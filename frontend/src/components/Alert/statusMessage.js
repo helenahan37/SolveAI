@@ -18,6 +18,11 @@ const StatusMessage = ({ type, message }) => {
 			icon = <AiOutlineLoading3Quarters className="animate-spin text-blue-500 text-3xl" />;
 			colorClass = 'bg-blue-100 text-blue-700';
 			break;
+
+		case 'deletedSuccess':
+			icon = <AiOutlineCheckCircle className="text-green-500 text-3xl" />;
+			colorClass = 'bg-green-100 text-green-700';
+			break;
 		default:
 			icon = null;
 	}

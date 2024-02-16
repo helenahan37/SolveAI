@@ -70,13 +70,10 @@ export default function PricingPlans() {
 			}}>
 			<div className="mx-auto max-w-7xl px-6 lg:px-8">
 				<div className="mx-auto max-w-4xl text-center">
-					<p className="mt-2 text-4xl font-bold tracking-tight text-white sm:text-5xl">
-						Pricing plans for teams of&nbsp;all&nbsp;sizes
-					</p>
+					<p className="mt-2 text-4xl font-bold tracking-tight text-white sm:text-5xl">Pricing plans</p>
 				</div>
 				<p className="mx-auto mt-6 max-w-2xl text-center text-lg leading-8 text-gray-300">
-					Choose an affordable plan that’s packed with the best features for engaging your audience, creating customer
-					loyalty, and driving sales.
+					Choose an affordable plan packed with powerful features to help you create the text you desire effortlessly.
 				</p>
 				<div className="isolate mx-auto mt-10 grid max-w-md grid-cols-1 gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
 					{tiers.map((tier) => (
