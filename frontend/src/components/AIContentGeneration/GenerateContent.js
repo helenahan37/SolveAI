@@ -38,7 +38,7 @@ const AIContentGenerator = () => {
 	const navigate = useNavigate();
 
 	const goToHistory = () => {
-		navigate('/history'); // 使用 navigate 函数跳转到指定的路由
+		navigate('/history');
 	};
 
 	if (isLoading) {
