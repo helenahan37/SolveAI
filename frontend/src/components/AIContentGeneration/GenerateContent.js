@@ -8,6 +8,7 @@ import StatusMessage from '../Alert/statusMessage';
 import { contentGenerateAPI } from '../../apis/chatGPT/chatGPT';
 import { useMutation } from '@tanstack/react-query';
 import generator from '../../assets/generator.png';
+import { useNavigate } from 'react-router-dom';
 
 const AIContentGenerator = () => {
 	const [generatedContent, setGeneratedContent] = useState('');
@@ -34,6 +35,12 @@ const AIContentGenerator = () => {
 			setGeneratedContent(`Generated content for prompt: ${values?.prompt}`);
 		},
 	});
+
+	const navigate = useNavigate();
+
+	const goToHistory = () => {
+		navigate('/history'); // 使用 navigate 函数跳转到指定的路由
+	};
 
 	if (isLoading) {
 		return <StatusMessage type="loading" message="Loading please wait..." />;
@@ -140,8 +147,13 @@ const AIContentGenerator = () => {
 							className="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-gradient-to-r from-purple-500 to-blue-500 hover:from-indigo-600 hover:to-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
 							Generate Content
 						</button>
-						{/* Link to view history */}
-						<Link to="/history">View history</Link>
+						<button
+							type="button" // 重要：确保这是一个 button 类型，避免提交表单
+							className="w-full mt-3 py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+							onClick={goToHistory} // 点击按钮时调用 goToHistory 函数
+						>
+							View History
+						</button>
 					</form>
 
 					{/* Display generated content */}
