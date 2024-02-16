@@ -49,10 +49,10 @@ const Login = () => {
 
 	//update userAuth state
 	useEffect(() => {
-		if (mutation.isSuccess) {
+		if (mutation) {
 			login();
 		}
-	}, [mutation]);
+	}, [mutation.isSuccess]);
 
 	return (
 		<div className="min-h-screen bg-gray-900 flex items-center justify-center">
