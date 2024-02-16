@@ -14,7 +14,7 @@ import { useQuery } from '@tanstack/react-query';
 const navigation = [
 	{ name: 'Dashboard', href: '/dashboard', current: true },
 	{ name: 'Pricing', href: '/plans', current: true },
-	{ name: 'Generation History', href: '/generate-history', current: true },
+	{ name: 'Generation History', href: '/history', current: true },
 ];
 const userNavigation = [{ name: 'Sign out', href: '#' }];
 
