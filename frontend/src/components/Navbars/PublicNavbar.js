@@ -36,9 +36,9 @@ export default function PublicNavbar() {
 						</div>
 						<div className="hidden lg:flex lg:gap-x-12">
 							{navigation.map((item) => (
-								<Link key={item.name} href={item.href} className="text-sm font-semibold leading-6 text-white">
+								<a key={item.name} href={item.href} className="text-sm font-semibold leading-6 text-white">
 									{item.name}
-								</Link>
+								</a>
 							))}
 						</div>
 						<div className="hidden lg:flex lg:flex-1 lg:justify-end">
