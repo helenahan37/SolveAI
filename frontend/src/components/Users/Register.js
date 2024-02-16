@@ -17,7 +17,7 @@ const validationSchema = Yup.object({
 
 const Registration = () => {
 	//check user authentication
-	const { isAuthenticated } = useAuth();
+	const { isAuthenticated, login } = useAuth();
 	const navigate = useNavigate();
 
 	// Redirect if a user is authenticated
