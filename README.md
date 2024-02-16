@@ -26,7 +26,7 @@ Using OpenAI text generation models
 
 ![featurepage](/demo/feature-page.png)
 
-![generationpage](/demo/generation-page.png)
+![generatorpage](/demo/generator-page.png)
 
 ![pricingpage](/demo/pricing-page.png)
 
@@ -34,4 +34,4 @@ Using OpenAI text generation models
 
 ![checkout](/demo/checkout-page.png)
 
-![history](/demo/generator-page.png)
+![history](/demo/history-page.png)
