@@ -105,14 +105,14 @@ export default function PrivateNavbar() {
 												{userNavigation.map((item) => (
 													<Menu.Item key={item.name}>
 														{({ active }) => (
-															<Link
+															<a
 																href={item.href}
 																className={classNames(
 																	active ? 'bg-gray-100' : '',
 																	'block px-4 py-2 text-sm text-gray-700'
 																)}>
 																{item.name}
-															</Link>
+															</a>
 														)}
 													</Menu.Item>
 												))}
