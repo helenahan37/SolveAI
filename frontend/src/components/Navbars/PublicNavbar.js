@@ -68,6 +68,7 @@ export default function PublicNavbar() {
 									<div className="space-y-2 py-6">
 										{navigation.map((item) => (
 											<Link
+												onClick={() => setMobileMenuOpen(false)}
 												key={item.name}
 												to={item.to}
 												className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-800">
@@ -77,6 +78,7 @@ export default function PublicNavbar() {
 									</div>
 									<div className="py-6">
 										<Link
+											onClick={() => setMobileMenuOpen(false)}
 											to="/login"
 											className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-gray-800">
 											Log in
