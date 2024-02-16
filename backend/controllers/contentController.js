@@ -10,7 +10,7 @@ const deleteContent = asyncHandler(async (req, res) => {
 
 	const user = await User.findById(req.user?._id);
 	if (user) {
-		user?.contentHistory.pull(deletedContent?._id);
+		user?.contentHistory.pull(deletedContent._id);
 		await user.save();
 	}
 
