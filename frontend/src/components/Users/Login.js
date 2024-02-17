@@ -14,14 +14,15 @@ const validationSchema = Yup.object({
 });
 
 const Login = () => {
+	const navigation = useNavigate();
+
 	//custom auth hook
 	const { isAuthenticated, login } = useAuth();
 
-	const navigate = useNavigate();
 	//Redirect if a user is login
 	useEffect(() => {
 		if (isAuthenticated) {
-			navigate('/dashboard');
+			navigation('/dashboard');
 		}
 	}, [isAuthenticated]);
 	//mutation
@@ -37,7 +38,7 @@ const Login = () => {
 			mutation.mutate(values);
 			// Simulate login success and navigate to dashboard
 			setTimeout(() => {
-				navigate('/dashboard');
+				navigation('/dashboard');
 			}, 3000);
 		},
 	});

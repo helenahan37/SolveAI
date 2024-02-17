@@ -36,7 +36,7 @@ export default function PublicNavbar() {
 						</div>
 						<div className="hidden lg:flex lg:gap-x-12">
 							{navigation.map((item) => (
-								<Link key={item.name} to={item.href} className="text-sm font-semibold leading-6 text-white">
+								<Link key={item.name} to={item.to} className="text-sm font-semibold leading-6 text-white">
 									{item.name}
 								</Link>
 							))}
@@ -70,7 +70,7 @@ export default function PublicNavbar() {
 											<Link
 												onClick={() => setMobileMenuOpen(false)}
 												key={item.name}
-												to={item.href}
+												to={item.to}
 												className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-800">
 												{item.name}
 											</Link>

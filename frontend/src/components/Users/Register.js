@@ -24,6 +24,8 @@ const Registration = () => {
 	useEffect(() => {
 		if (isAuthenticated) {
 			navigate('/dashboard');
+		} else {
+			navigate('/register');
 		}
 	}, [isAuthenticated, login]);
 
