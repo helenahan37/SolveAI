@@ -71,7 +71,7 @@ const login = asyncHandler(async (req, res) => {
 	res.cookie('token', token, {
 		httpOnly: true,
 		secure: true,
-		sameSite: 'none',
+		sameSite: 'strict',
 		expires: 3 * 24 * 60 * 60 * 1000, // 3 days
 	});
 
