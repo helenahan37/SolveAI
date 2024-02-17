@@ -19,8 +19,6 @@ const Registration = () => {
 	//check user authentication
 	const { isAuthenticated } = useAuth();
 	const navigate = useNavigate();
-	const [registrationError, setRegistrationError] = useState('');
-	const [showStatusMessage, setShowStatusMessage] = useState(false);
 
 	// Redirect if a user is authenticated
 	useEffect(() => {
@@ -31,23 +29,14 @@ const Registration = () => {
 
 	const mutation = useMutation({
 		mutationFn: registerAPI,
-		onError: (error) => {
-			setRegistrationError(error.response.data.message);
-			// Show the status message
-			setShowStatusMessage(true);
-			// Hide the status message after 3 seconds
-			setTimeout(() => {
-				setShowStatusMessage(false);
-			}, 3000);
-		},
 		onSuccess: () => {
-			// Handle success scenario, for example:
-			setShowStatusMessage(true);
 			setTimeout(() => {
-				setShowStatusMessage(false);
-			}, 3000);
+				navigate('/login');
+			}, 2000);
 		},
-		// You can also handle the isLoading state similarly if needed
+		onError: (error) => {
+			console.error(error);
+		},
 	});
 
 	const formik = useFormik({
@@ -58,7 +47,6 @@ const Registration = () => {
 		},
 		validationSchema: validationSchema,
 		onSubmit: (values) => {
-			// Here, handle the form submission
 			console.log('Form values', values);
 			mutation.mutate(values); // Redirect user to login page
 
