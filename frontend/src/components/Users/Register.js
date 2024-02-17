@@ -20,15 +20,18 @@ const Registration = () => {
 	const { isAuthenticated, login } = useAuth();
 	const navigate = useNavigate();
 
-	// Redirect if a user is authenticated
-	useEffect(() => {
-		if (isAuthenticated) {
-			navigate('/dashboard');
-		}
-	}, [isAuthenticated]);
+	const mutation = useMutation({
+		mutationFn: registerAPI,
+		onSuccess: () => {
+			setTimeout(() => {
+				navigate('/login');
+			}, 2000);
+		},
+		onError: (error) => {
+			console.log(error);
+		},
+	});
 
-	const mutation = useMutation({ mutationFn: registerAPI });
-	// Formik setup for form handling
 	const formik = useFormik({
 		initialValues: {
 			email: '',
@@ -37,12 +40,7 @@ const Registration = () => {
 		},
 		validationSchema: validationSchema,
 		onSubmit: (values) => {
-			//  handle the form submission
 			mutation.mutate(values);
-
-			setTimeout(() => {
-				navigate('/login');
-			}, 2000);
 		},
 	});
 
