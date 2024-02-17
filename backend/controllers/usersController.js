@@ -65,14 +65,14 @@ const login = asyncHandler(async (req, res) => {
 
 	//Generate token
 	const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-		expiresIn: '7d', // token will expire in 7 days
+		expiresIn: '3d', // token will expire in 3 days
 	});
 	//set token in cookie
 	res.cookie('token', token, {
 		httpOnly: true,
-		secure: process.env.NODE_ENV === 'production',
-		sameSite: 'none',
-		expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), // 7 days
+		secure: true,
+		sameSite: 'strict',
+		maxAge: 24 * 60 * 60 * 1000, //1 day
 	});
 
 	//send response
