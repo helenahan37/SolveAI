@@ -34,14 +34,11 @@ const Login = () => {
 		},
 		validationSchema: validationSchema,
 		onSubmit: (values) => {
-			// Here, you would typically handle form submission
-
 			mutation.mutate(values);
-
 			// Simulate login success and navigate to dashboard
 			setTimeout(() => {
 				navigate('/dashboard');
-			}, 5000);
+			}, 3000);
 		},
 	});
 	//Update is authenticated
@@ -50,6 +47,7 @@ const Login = () => {
 			login();
 		}
 	}, [mutation.isSuccess]);
+
 	return (
 		<div className="min-h-screen bg-gray-900 flex items-center justify-center">
 			<div className="max-w-md w-full bg-white rounded-lg shadow-md p-8 m-4">

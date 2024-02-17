@@ -8,7 +8,7 @@ const AuthRoute = ({ children }) => {
 	if (isLoading) {
 		return <AuthCheckingAlert />;
 	}
-	if (isError || !isAuthenticated) {
+	if (isError || isAuthenticated === false) {
 		return <Navigate to="/login" state={{ from: location }} replace />;
 	}
 	return children;
