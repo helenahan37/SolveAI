@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Link, useNavigate } from 'react-router-dom';
@@ -24,8 +24,6 @@ const Registration = () => {
 	useEffect(() => {
 		if (isAuthenticated) {
 			navigate('/dashboard');
-		} else {
-			navigate('/register');
 		}
 	}, [isAuthenticated, login]);
 

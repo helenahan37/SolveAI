@@ -147,10 +147,9 @@ const AIContentGenerator = () => {
 							Generate Content
 						</button>
 						<button
-							type="button" // 重要：确保这是一个 button 类型，避免提交表单
+							type="button"
 							className="w-full mt-3 py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-							onClick={goToHistory} // 点击按钮时调用 goToHistory 函数
-						>
+							onClick={goToHistory}>
 							View History
 						</button>
 					</form>
