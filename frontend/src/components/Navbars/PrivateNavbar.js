@@ -3,20 +3,20 @@ import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { PlusIcon } from '@heroicons/react/20/solid';
 import { FiLogOut } from 'react-icons/fi';
-import { Link } from 'react-router-dom';
 import { useMutation } from '@tanstack/react-query';
 import { logoutAPI } from '../../apis/user/usersAPI';
 import { useAuth } from '../../AuthContext/AuthContext';
 import logo from '../../assets/logo.png';
 import { getUserProfileAPI } from '../../apis/user/usersAPI';
 import { useQuery } from '@tanstack/react-query';
+import { Link, useNavigate } from 'react-router-dom';
 
 const navigation = [
 	{ name: 'Dashboard', href: '/dashboard', current: true },
 	{ name: 'Pricing', href: '/plans', current: true },
 	{ name: 'Generation History', href: '/history', current: true },
 ];
-const userNavigation = [{ name: 'Sign out', href: '#' }];
+const userNavigation = [{ name: 'Sign out', href: '/' }];
 
 function classNames(...classes) {
 	return classes.filter(Boolean).join(' ');
@@ -29,10 +29,14 @@ export default function PrivateNavbar() {
 
 	//mutation
 	const mutation = useMutation({ mutationFn: logoutAPI });
+
+	const redirect = useNavigate();
 	//handle logout
 	const handleLogout = () => {
 		mutation.mutate();
 		logout();
+
+		redirect('/login');
 	};
 
 	return (
