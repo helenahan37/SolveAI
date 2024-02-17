@@ -72,7 +72,7 @@ const login = asyncHandler(async (req, res) => {
 		httpOnly: true,
 		secure: process.env.NODE_ENV === 'production',
 		sameSite: 'strict',
-		expires: 3 * 24 * 60 * 60 * 1000, // 3 days
+		expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
 	});
 
 	//send response
