@@ -25,7 +25,7 @@ const Registration = () => {
 		if (isAuthenticated) {
 			navigate('/dashboard');
 		}
-	}, [isAuthenticated, login]);
+	}, [isAuthenticated]);
 
 	const mutation = useMutation({ mutationFn: registerAPI });
 	// Formik setup for form handling
