@@ -72,7 +72,7 @@ const login = asyncHandler(async (req, res) => {
 		httpOnly: true,
 		secure: process.env.NODE_ENV === 'production',
 		sameSite: 'strict',
-		maxAge: 24 * 60 * 60 * 1000, //1 day
+		expires: 7 * 24 * 60 * 60 * 1000,
 	});
 
 	//send response
@@ -88,7 +88,6 @@ const login = asyncHandler(async (req, res) => {
 //*logout
 const logout = asyncHandler((req, res) => {
 	res.cookie('token', '', { maxAge: 1 });
-
 	res.json({
 		status: 'Success',
 		message: 'User logged out successfully',
