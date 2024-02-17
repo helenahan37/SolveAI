@@ -35,7 +35,7 @@ export default function PrivateNavbar() {
 	const handleLogout = () => {
 		mutation.mutate();
 		logout();
-		localStorage.removeItem('token');
+		localStorage.clear();
 		redirect('/login');
 	};
 
