@@ -87,7 +87,9 @@ const login = asyncHandler(async (req, res) => {
 
 //*logout
 const logout = asyncHandler((req, res) => {
-	res.cookie('token', '', { maxAge: 1 });
+	//clear token Cookie
+	res.clearCookie('token');
+
 	res.json({
 		status: 'Success',
 		message: 'User logged out successfully',
