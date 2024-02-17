@@ -70,9 +70,9 @@ const login = asyncHandler(async (req, res) => {
 	//set token in cookie
 	res.cookie('token', token, {
 		httpOnly: true,
-		secure: process.env.NODE_ENV === 'production',
+		secure: true,
 		sameSite: 'none',
-		expires: 7 * 24 * 60 * 60 * 1000,
+		expires: 3 * 24 * 60 * 60 * 1000, // 3 days
 	});
 
 	//send response
