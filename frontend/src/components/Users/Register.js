@@ -16,21 +16,18 @@ const validationSchema = Yup.object({
 });
 
 const Registration = () => {
-	//check user authentication
+	//custom auth hook
+	const { isAuthenticated, login } = useAuth();
 	const navigate = useNavigate();
-
-	const mutation = useMutation({
-		mutationFn: registerAPI,
-		onSuccess: () => {
-			setTimeout(() => {
-				navigate('/login');
-			}, 2000);
-		},
-		onError: (error) => {
-			console.log(error);
-		},
-	});
-
+	//Redirect if a user is login
+	useEffect(() => {
+		if (isAuthenticated) {
+			navigate('/dashboard');
+		}
+	}, [isAuthenticated]);
+	//mutation
+	const mutation = useMutation({ mutationFn: registerAPI });
+	// Formik setup for form handling
 	const formik = useFormik({
 		initialValues: {
 			email: '',
@@ -39,7 +36,13 @@ const Registration = () => {
 		},
 		validationSchema: validationSchema,
 		onSubmit: (values) => {
-			mutation.mutate(values);
+			// Here, handle the form submission
+			console.log('Form values', values);
+			mutation.mutate(values); // Redirect user to login page
+
+			setTimeout(() => {
+				navigate('/login');
+			}, 5000);
 		},
 	});
 
