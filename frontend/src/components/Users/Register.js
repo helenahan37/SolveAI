@@ -16,18 +16,40 @@ const validationSchema = Yup.object({
 });
 
 const Registration = () => {
-	//custom auth hook
-	const { isAuthenticated, login } = useAuth();
+	//check user authentication
+	const { isAuthenticated } = useAuth();
 	const navigate = useNavigate();
-	//Redirect if a user is login
+	const [registrationError, setRegistrationError] = useState('');
+	const [showStatusMessage, setShowStatusMessage] = useState(false);
+
+	// Redirect if a user is authenticated
 	useEffect(() => {
 		if (isAuthenticated) {
 			navigate('/dashboard');
 		}
 	}, [isAuthenticated]);
-	//mutation
-	const mutation = useMutation({ mutationFn: registerAPI });
-	// Formik setup for form handling
+
+	const mutation = useMutation({
+		mutationFn: registerAPI,
+		onError: (error) => {
+			setRegistrationError(error.response.data.message);
+			// Show the status message
+			setShowStatusMessage(true);
+			// Hide the status message after 3 seconds
+			setTimeout(() => {
+				setShowStatusMessage(false);
+			}, 3000);
+		},
+		onSuccess: () => {
+			// Handle success scenario, for example:
+			setShowStatusMessage(true);
+			setTimeout(() => {
+				setShowStatusMessage(false);
+			}, 3000);
+		},
+		// You can also handle the isLoading state similarly if needed
+	});
+
 	const formik = useFormik({
 		initialValues: {
 			email: '',
