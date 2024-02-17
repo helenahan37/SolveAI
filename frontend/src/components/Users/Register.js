@@ -49,10 +49,6 @@ const Registration = () => {
 		onSubmit: (values) => {
 			console.log('Form values', values);
 			mutation.mutate(values); // Redirect user to login page
-
-			setTimeout(() => {
-				navigate('/login');
-			}, 5000);
 		},
 	});
 
