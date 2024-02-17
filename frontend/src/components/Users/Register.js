@@ -17,7 +17,6 @@ const validationSchema = Yup.object({
 
 const Registration = () => {
 	//check user authentication
-	const { isAuthenticated, login } = useAuth();
 	const navigate = useNavigate();
 
 	const mutation = useMutation({

@@ -9,7 +9,7 @@ import { useAuth } from '../../AuthContext/AuthContext';
 import logo from '../../assets/logo.png';
 import { getUserProfileAPI } from '../../apis/user/usersAPI';
 import { useQuery } from '@tanstack/react-query';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const navigation = [
 	{ name: 'Dashboard', href: '/dashboard', current: true },
@@ -29,14 +29,10 @@ export default function PrivateNavbar() {
 
 	//mutation
 	const mutation = useMutation({ mutationFn: logoutAPI });
-
-	const redirect = useNavigate();
 	//handle logout
 	const handleLogout = () => {
 		mutation.mutate();
 		logout();
-		localStorage.clear();
-		redirect('/login');
 	};
 
 	return (
