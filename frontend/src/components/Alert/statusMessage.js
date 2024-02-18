@@ -28,7 +28,7 @@ const StatusMessage = ({ type, message }) => {
 	}
 
 	return (
-		<div className={`flex items-center p-4 rounded-lg ${colorClass} space-x-3`}>
+		<div className={`flex items-center mb-2 p-4 rounded-lg ${colorClass} space-x-3`}>
 			{icon}
 			<span className="text-sm font-medium">{message}</span>
 		</div>
