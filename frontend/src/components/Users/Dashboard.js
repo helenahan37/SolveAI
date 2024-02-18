@@ -20,18 +20,25 @@ const Dashboard = () => {
 
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-6 m-6">
 					{/* Profile Section */}
-					<div className="mb-6 bg-white p-4 shadow rounded-lg">
+					<div className="mb-6 bg-gray-700 p-6 shadow-lg rounded-lg">
 						<h2 className="text-2xl font-semibold mb-6 text-white">Profile Information</h2>
 						<div>
-							<label className="block text-gray-400 text-sm font-bold mb-2" htmlFor="username">
-								Name
-							</label>
-							<p className="text-gray-300 mb-4">{data?.user?.username}</p>
-
-							<label className="block text-gray-400 text-sm font-bold mb-2" htmlFor="email">
-								Email
-							</label>
-							<p className="text-gray-300">{data?.user?.email}</p>
+							<div className="mb-4">
+								<label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
+									Name
+								</label>
+								<p className="border rounded w-full py-2 px-3 text-gray-700 leading-tight" id="username">
+									{data?.user?.username}
+								</p>
+							</div>
+							<div className="mb-4">
+								<label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+									Email
+								</label>
+								<p className="border rounded w-full py-2 px-3 text-gray-700 leading-tight" id="email">
+									{data?.user?.email}
+								</p>
+							</div>
 						</div>
 					</div>
 
