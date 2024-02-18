@@ -36,7 +36,7 @@ const Dashboard = () => {
 					</div>
 
 					{/* Credit Usage Section */}
-					<div className="mb-6 bg-white p-4 shadow rounded-lg">
+					<div className="mb-6 bg-white shadow rounded-lg">
 						<h2 className="text-xl font-semibold mb-4">Credit Usage</h2>
 						<div>
 							<p className="mb-4">Monthly Credit: {data?.user?.monthlyRequestCount}</p>
@@ -50,7 +50,7 @@ const Dashboard = () => {
 					</div>
 
 					{/* Payment and Plans Section */}
-					<div className="mb-6 bg-white p-4 shadow rounded-lg">
+					<div className="mb-6 bg-white  shadow rounded-lg">
 						<h2 className="text-xl font-semibold mb-4">Payment & Plans</h2>
 						<div>
 							<p className="mb-4">Current Plan: {data?.user?.subscriptionPlan}</p>
@@ -78,7 +78,7 @@ const Dashboard = () => {
 					</div>
 
 					{/* Trial Information Section */}
-					<div className="mb-6 bg-white p-4 shadow rounded-lg">
+					<div className="mb-6 bg-white  shadow rounded-lg">
 						<h2 className="text-xl font-semibold mb-4">Trial Information</h2>
 						<div>
 							<p className="mb-4">
@@ -99,7 +99,7 @@ const Dashboard = () => {
 					</div>
 
 					{/* History Section */}
-					<div className="mb-6 bg-white p-4 shadow rounded-lg col-span-1 md:col-span-2">
+					<div className="mb-6 bg-white  shadow rounded-lg col-span-1 md:col-span-2">
 						<h2 className="text-2xl font-bold text-gray-800 mb-5">Payment History</h2>
 						{data?.user?.payments?.length > 0 ? (
 							<ul className="divide-y divide-gray-200">
