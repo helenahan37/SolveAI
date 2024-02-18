@@ -10,6 +10,7 @@ import logo from '../../assets/logo.png';
 import { getUserProfileAPI } from '../../apis/user/usersAPI';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const navigation = [
 	{ name: 'Dashboard', href: '/dashboard', current: true },
@@ -23,6 +24,8 @@ function classNames(...classes) {
 }
 
 export default function PrivateNavbar() {
+	const redirect = useNavigate();
+
 	//check user authentication
 	const { logout } = useAuth();
 	const { data } = useQuery({ queryFn: getUserProfileAPI, queryKey: ['userProfile'] });
@@ -30,9 +33,14 @@ export default function PrivateNavbar() {
 	//mutation
 	const mutation = useMutation({ mutationFn: logoutAPI });
 	//handle logout
-	const handleLogout = () => {
-		mutation.mutate();
-		logout();
+	const handleLogout = async () => {
+		try {
+			await mutation.mutateAsync();
+			logout();
+			redirect('/');
+		} catch (error) {
+			console.error('Failed to logout:', error);
+		}
 	};
 
 	return (
@@ -150,6 +158,7 @@ export default function PrivateNavbar() {
 							<div className="mt-3 space-y-1 px-2 sm:px-3">
 								{userNavigation.map((item) => (
 									<Link
+										onClick={handleLogout}
 										key={item.name}
 										to={item.href}
 										className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">
