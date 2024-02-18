@@ -13,19 +13,16 @@ export const registerAPI = async (userData) => {
 
 //* =====User login=========
 export const loginAPI = async (userData) => {
-	const token = localStorage.getItem('token');
-	const response = await axios.post(
-		`${baseURL}/users/login`,
-		{
-			email: userData?.email,
-			password: userData?.password,
-		},
-		{
-			headers: {
-				Authorization: `Bearer ${token}`,
-			},
-		}
-	);
+	const response = await axios.post(`${baseURL}/users/login`, {
+		email: userData?.email,
+		password: userData?.password,
+	});
+	const token = response?.data?.token;
+	if (token) {
+		// Store the token in localStorage or sessionStorage
+		localStorage.setItem('token', token);
+	}
+
 	return response?.data;
 };
 
