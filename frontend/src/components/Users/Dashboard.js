@@ -21,7 +21,7 @@ const Dashboard = () => {
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-6 m-4">
 					{/* Profile Section */}
 					<div className="mb-6 bg-white p-4 shadow rounded-lg">
-						<h2 className="text-2xl font-semibold mb-6 text-white">Profile Information</h2>
+						<h2 className="text-2xl font-semibold mb-6  text-gray-700">Profile Information</h2>
 						<div>
 							<div className="mb-4">
 								<label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
