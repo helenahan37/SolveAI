@@ -52,7 +52,7 @@ const Login = () => {
 	return (
 		<div className="min-h-screen bg-gray-900 flex items-center justify-center">
 			<div className="max-w-md w-full bg-white rounded-lg shadow-md p-8 m-4">
-				<h2 className="text-2xl font-bold text-center text-gray-800 mb-8">Login to Your Account</h2>
+				<h2 className="text-2xl font-bold text-center text-gray-800 mt-3 mb-8">Login to Your Account</h2>
 				{/* display loading */}
 				{mutation.isPending && <StatusMessage type="loading" message="Loading..." />}
 				{/* display error */}
