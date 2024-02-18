@@ -1,7 +1,15 @@
 const express = require('express');
-const cors = require('cors');
-require('dotenv').config();
 const app = express();
+const cors = require('cors');
+//*===CORS===//
+const corsOptions = {
+	origin: 'https://solveai.netlify.app/',
+	credentials: true,
+};
+app.use(cors(corsOptions));
+
+require('dotenv').config();
+
 const cookieParser = require('cookie-parser');
 
 const User = require('./models/User');
@@ -94,13 +102,6 @@ cron.schedule('0 0 1 * * *', async () => {
 	}
 });
 
-//*===CORS===//
-
-const corsOptions = {
-	origin: true,
-	credentials: true,
-};
-app.use(cors(corsOptions));
 //*===Middleware===//
 //pass incoming jaon data
 app.use(express.json());
