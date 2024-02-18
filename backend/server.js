@@ -1,10 +1,16 @@
 const express = require('express');
-const app = express();
-app.use(express.urlencoded({ extended: true }));
-app.use(express.static(`${__dirname}/public`));
 require('dotenv').config();
 
+const app = express();
 const cors = require('cors');
+
+//*===CORS===//
+const corsOptions = {
+	origin: true,
+	credentials: true,
+};
+app.use(cors(corsOptions));
+
 const cookieParser = require('cookie-parser');
 const User = require('./models/User');
 const cron = require('node-cron');
@@ -16,11 +22,6 @@ const openAIRouter = require('./routes/openAIRouter');
 require('./utils/connectDB')();
 
 const PORT = process.env.PORT || 5000;
-
-//*===CORS===//
-app.use(cors());
-
-require('dotenv').config();
 
 //*===Cron Jobs===//
 //* Cron for trial period
