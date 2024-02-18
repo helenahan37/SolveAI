@@ -11,6 +11,7 @@ import logo from '../../assets/logo.png';
 import { getUserProfileAPI } from '../../apis/user/usersAPI';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const navigation = [
 	{ name: 'Dashboard', href: '/dashboard', current: true },
@@ -24,7 +25,15 @@ function classNames(...classes) {
 }
 
 export default function PrivateNavbar() {
+	const { isAuthenticated } = useAuth();
 	const navigate = useNavigate();
+
+	useEffect(() => {
+		if (!isAuthenticated) {
+			navigate('/');
+		}
+	}, [isAuthenticated, navigate]);
+
 	//check user authentication
 	const { logout } = useAuth();
 	const { data } = useQuery({ queryFn: getUserProfileAPI, queryKey: ['userProfile'] });
@@ -38,7 +47,6 @@ export default function PrivateNavbar() {
 			{
 				onSuccess: () => {
 					logout();
-					navigate('/');
 				},
 				onError: (error) => {
 					console.error('Logout failed:', error);
