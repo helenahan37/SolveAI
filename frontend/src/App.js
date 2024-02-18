@@ -16,9 +16,14 @@ import VerifyPayment from './components/StripePayment/VerifyPayment';
 import GenerationHistory from './components/Users/ContentHistory';
 import AppFeatures from './components/Features/Features';
 import AboutUs from './components/About/About';
+import { useEffect } from 'react';
 
 export default function App() {
-	const { isAuthenticated } = useAuth();
+	const { isAuthenticated, setIsAuthenticated } = useAuth();
+	useEffect(() => {
+		const storedAuthStatus = localStorage.getItem('isAuthenticated');
+		setIsAuthenticated(storedAuthStatus === 'true');
+	}, []);
 
 	return (
 		<>
