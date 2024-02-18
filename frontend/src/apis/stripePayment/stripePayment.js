@@ -20,7 +20,9 @@ export const createPaymentIntentAPI = async (payment) => {
 		{ amount: Number(payment?.amount), subscriptionPlan: payment?.plan },
 
 		{
-			withCredentials: true,
+			headers: {
+				Authorization: `Bearer ${localStorage.getItem('token')}`,
+			},
 		}
 	);
 	return response?.data;
@@ -33,7 +35,9 @@ export const verifyPaymentAPI = async (paymentId) => {
 		{},
 
 		{
-			withCredentials: true,
+			headers: {
+				Authorization: `Bearer ${localStorage.getItem('token')}`,
+			},
 		}
 	);
 	return response?.data;
