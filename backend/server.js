@@ -7,6 +7,7 @@ const cors = require('cors');
 //*===CORS===//
 const corsOptions = {
 	origin: ['https://solveai.netlify.app' || 'http://localhost:3000'],
+	credentials: true,
 };
 
 app.use(cors(corsOptions));
