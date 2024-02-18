@@ -7,7 +7,9 @@ export const contentGenerateAPI = async (inputPrompt) => {
 		`${baseURL}/openai/generate-content`,
 		{ prompt: inputPrompt },
 		{
-			withCredentials: true,
+			headers: {
+				Authorization: `Bearer ${localStorage.getItem('token')}`,
+			},
 		}
 	);
 	return response?.data;
