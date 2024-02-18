@@ -6,12 +6,11 @@ const cors = require('cors');
 
 //*===CORS===//
 const corsOptions = {
-	origin: true,
-	credentials: true,
+	origin: ['https://solveai.netlify.app' || 'http://localhost:3000'],
 };
+
 app.use(cors(corsOptions));
 
-const cookieParser = require('cookie-parser');
 const User = require('./models/User');
 const cron = require('node-cron');
 
@@ -105,8 +104,6 @@ cron.schedule('0 0 1 * * *', async () => {
 //*===Middleware===//
 //pass incoming jaon data
 app.use(express.json());
-//parse cookies
-app.use(cookieParser());
 
 //*===Routes===//
 app.use('/api/users', usersRouter);
