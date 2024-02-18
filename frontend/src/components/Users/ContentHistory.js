@@ -7,7 +7,10 @@ import { Link } from 'react-router-dom';
 import history from '../../assets/history.jpg';
 import { deleteContentAPI } from '../../apis/user/usersAPI';
 const GenerationHistory = () => {
-	const { isLoading, data, isError, error } = useQuery({ queryFn: getUserProfileAPI, queryKey: ['userProfile'] });
+	const { isLoading, data, isError, refatch, error } = useQuery({
+		queryFn: getUserProfileAPI,
+		queryKey: ['userProfile'],
+	});
 
 	const [displayContent, setDisplayContent] = useState({});
 	const [showDeletedMessage, setShowDeletedMessage] = useState(false);
@@ -28,6 +31,7 @@ const GenerationHistory = () => {
 			await deleteContentMutation.mutateAsync(contentId);
 			setShowDeletedMessage(true);
 			setTimeout(() => setShowDeletedMessage(false), 2000);
+			refatch();
 		} catch (error) {
 			console.error('Failed to delete content:', error);
 		}
