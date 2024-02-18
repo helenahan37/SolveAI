@@ -13,19 +13,25 @@ export const AuthProvider = ({ children }) => {
 		queryKey: ['checkAuth'],
 	});
 	//update the authenticated user
+
 	useEffect(() => {
 		if (isSuccess) {
 			setIsAuthenticated(data);
+		} else {
+			const storedAuthStatus = localStorage.getItem('isAuthenticated');
+			setIsAuthenticated(storedAuthStatus === 'true');
 		}
 	}, [data, isSuccess]);
 
 	//Update the user auth after login
 	const login = () => {
 		setIsAuthenticated(true);
+		localStorage.setItem('isAuthenticated', 'true');
 	};
 	//Update the user auth after login
 	const logout = () => {
 		setIsAuthenticated(false);
+		localStorage.removeItem('isAuthenticated');
 	};
 
 	return (
