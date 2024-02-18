@@ -5,23 +5,16 @@ const getToken = require('../utils/getToken');
 
 const isAuthenticated = asyncHandler(async (req, res, next) => {
 	const token = getToken(req);
+	if (!token) {
+		return res.status(401).json({ message: 'Unauthorized' });
+	}
 
-	if (token) {
-		try {
-			const decoded = verifyToken(token);
-
-			if (!decoded) {
-				return res.status(401).json({ message: 'Not authorized, token failed' });
-			}
-
-			req.user = await User.findById(decoded.id).select('-password');
-			next();
-		} catch (error) {
-			console.error('Error in token verification:', error);
-			res.status(401).json({ message: 'Not authorized, token failed' });
-		}
-	} else {
-		res.status(401).json({ message: token });
+	try {
+		const decoded = verifyToken(token);
+		req.user = await User.findById(decoded?.id).select('-password');
+		return next();
+	} catch (error) {
+		return res.status(401).json({ message: 'Unauthorized' });
 	}
 });
 
