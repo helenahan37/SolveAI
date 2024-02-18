@@ -117,17 +117,10 @@ const verifyPayment = asyncHandler(async (req, res) => {
 
 //* Handle free subscription plan
 const handleFreeSubscription = asyncHandler(async (req, res) => {
-	const token = getToken(req);
-	if (!token) {
-		return res.status(401).json({ error: 'Unauthorized' });
-	}
-	try {
-		const decoded = verifyToken(token);
-		const user = await User.findById(decoded.id);
+	const user = req?.user;
+	console.log(user);
 
-		if (!user) {
-			return res.status(404).json({ error: 'User not found' });
-		}
+	try {
 		// check if the user is eligible for renewal
 		if (shouldRenewalSubscription(user)) {
 			user.subscriptionPlan = 'Free';
