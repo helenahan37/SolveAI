@@ -4,7 +4,7 @@ const verifyToken = require('../utils/verifyToken');
 const getToken = require('../utils/getToken');
 
 const isAuthenticated = asyncHandler(async (req, res, next) => {
-	const token = getToken(req);
+	const token = getToken();
 	if (!token) {
 		return res.status(401).json({ message: 'Unauthorized' });
 	}

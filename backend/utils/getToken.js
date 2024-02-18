@@ -1,11 +1,12 @@
 const getToken = (req) => {
-	//get token from header
-	const token = req?.headers?.authorization?.split(' ')[1];
-	if (token === undefined) {
-		return 'No token found in the header';
-	} else {
-		return token;
+	// Get the token from the Authorization header
+	const authHeader = req?.headers?.authorization;
+	if (authHeader && authHeader.startsWith('Bearer ')) {
+		// Extract and return the token part
+		return authHeader.split(' ')[1];
 	}
+	// Return null if no token is present
+	return null;
 };
 
 module.exports = getToken;

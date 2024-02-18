@@ -1,8 +1,9 @@
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
 const asyncHandler = require('express-async-handler');
 const generateToken = require('../utils/generateToken');
+const verifyToken = require('../utils/verifyToken');
+const getToken = require('../utils/getToken');
 
 //* Registration
 const register = asyncHandler(async (req, res) => {
@@ -91,15 +92,18 @@ const userProfile = asyncHandler(async (req, res) => {
 
 //* Check user auth
 const checkAuth = asyncHandler(async (req, res, next) => {
-	const decode = jwt.verify(req.cookies.token, process.env.JWT_SECRET);
-	if (decode) {
-		res.json({
-			isAuthenticated: true,
-		});
+	const token = getToken(req); // Extract the token from the request
+	if (!token) {
+		return res.json({ isAuthenticated: false }); // No token found
+	}
+	// Verify the token
+	const decoded = verifyToken(token);
+	if (decoded) {
+		// Token is valid
+		res.json({ isAuthenticated: true });
 	} else {
-		res.json({
-			isAuthenticated: false,
-		});
+		// Token verification failed
+		res.json({ isAuthenticated: false });
 	}
 });
 
