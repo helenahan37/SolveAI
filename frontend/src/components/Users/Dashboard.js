@@ -20,7 +20,7 @@ const Dashboard = () => {
 
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-6 m-6">
 					{/* Profile Section */}
-					<div className="mb-6 bg-gray-700 p-6 shadow-lg rounded-lg">
+					<div className="mb-6 bg-gray-white p-6 shadow-lg rounded-lg">
 						<h2 className="text-2xl font-semibold mb-6 text-white">Profile Information</h2>
 						<div>
 							<div className="mb-4">
