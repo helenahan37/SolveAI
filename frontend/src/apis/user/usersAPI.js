@@ -13,19 +13,33 @@ export const registerAPI = async (userData) => {
 
 //* =====User login=========
 export const loginAPI = async (userData) => {
-	const response = await axios.post(`${baseURL}/users/login`, {
-		email: userData?.email,
-		password: userData?.password,
-	});
+	const token = localStorage.getItem('token');
+	const response = await axios.post(
+		`${baseURL}/users/login`,
+		{
+			email: userData?.email,
+			password: userData?.password,
+		},
+		{
+			headers: {
+				Authorization: `Bearer ${token}`,
+			},
+		}
+	);
 	return response?.data;
 };
 
 //* =============Check Auth=========
 export const checkAuthAPI = async () => {
-	const response = await axios.get(`${baseURL}/users/auth/check`);
+	const token = localStorage.getItem('token');
+	const response = await axios.get(`${baseURL}/users/auth/check`, {
+		headers: {
+			Authorization: `Bearer ${token}`,
+		},
+	});
+
 	return response?.data;
 };
-
 //* =============User logout=========
 export const logoutAPI = async () => {
 	const response = await axios.post(`${baseURL}/users/logout`, {});
@@ -34,7 +48,14 @@ export const logoutAPI = async () => {
 
 //* ==========Get UserProfile=========
 export const getUserProfileAPI = async () => {
-	const response = await axios.get(`${baseURL}/users/profile`);
+	const token = localStorage.getItem('token');
+
+	const response = await axios.get(`${baseURL}/users/profile`, {
+		headers: {
+			Authorization: `Bearer ${token}`,
+		},
+	});
+
 	return response?.data;
 };
 
