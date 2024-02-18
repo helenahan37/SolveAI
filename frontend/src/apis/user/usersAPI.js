@@ -28,13 +28,7 @@ export const checkAuthAPI = async () => {
 
 //* =============User logout=========
 export const logoutAPI = async () => {
-	const response = await axios.post(
-		`${baseURL}/users/logout`,
-		{},
-		{
-			withCredentials: true,
-		}
-	);
+	const response = await axios.post(`${baseURL}/users/logout`, {});
 	return response?.data;
 };
 
