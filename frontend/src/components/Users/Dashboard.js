@@ -15,7 +15,7 @@ const Dashboard = () => {
 		return <StatusMessage type="error" message={error?.response?.data?.message} />;
 	} else {
 		return (
-			<div className="mb-6 bg-white p-4 shadow rounded-lg">
+			<div className="mx-auto p-6 bg-gray-800 min-h-screen w-full">
 				<h1 className="text-4xl font-bold text-center mb-12 text-white">Customer Dashboard</h1>
 
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-6 m-4">
