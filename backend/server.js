@@ -2,26 +2,25 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 //*===CORS===//
-const corsOptions = {
-	origin: 'https://solveai.netlify.app',
-	credentials: true,
-};
+// const corsOptions = {
+// 	origin: 'https://solveai.netlify.app',
+// 	credentials: true,
+// };
 
-// app.use('*', function (req, res, next) {
-// 	if (req.headers.referer?.includes('https://solveai.netlify.app')) {
-// 		res.header('Access-Control-Allow-Origin', 'https://solveai.netlify.app');
-// 		res.header('Access-Control-Allow-Credentials', true);
-// 		res.header('Access-Control-Allow-Headers', 'Content-Type,Content-Length, Authorization, Accept,X-Requested-With');
-// 		res.header('Access-Control-Allow-Methods', 'PUT,POST,GET,DELETE,OPTIONS');
-// 	}
+app.use('*', function (req, res, next) {
+	if (req.headers.referer?.includes('https://solveai.netlify.app')) {
+		res.header('Access-Control-Allow-Origin', 'https://solveai.netlify.app');
+		res.header('Access-Control-Allow-Credentials', true);
+		res.header('Access-Control-Allow-Headers', 'Content-Type,Content-Length, Authorization, Accept,X-Requested-With');
+		res.header('Access-Control-Allow-Methods', 'PUT,POST,GET,DELETE,OPTIONS');
+	}
 
-// 	if (req.method === 'OPTIONS') {
-// 		// res.status(204).send('ok')
-// 		next();
-// 	} else {
-// 		next();
-// 	}
-// });
+	if (req.method === 'OPTIONS') {
+		next();
+	} else {
+		next();
+	}
+});
 
 require('dotenv').config();
 

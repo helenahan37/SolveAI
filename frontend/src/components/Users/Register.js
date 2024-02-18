@@ -48,7 +48,7 @@ const Registration = () => {
 		validationSchema: validationSchema,
 		onSubmit: (values) => {
 			console.log('Form values', values);
-			mutation.mutate(values); // Redirect user to login page
+			mutation.mutate(values);
 		},
 	});
 
