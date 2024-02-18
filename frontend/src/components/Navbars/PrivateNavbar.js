@@ -33,9 +33,18 @@ export default function PrivateNavbar() {
 	const mutation = useMutation({ mutationFn: logoutAPI });
 	//handle logout
 	const handleLogout = () => {
-		mutation.mutate();
-		logout();
-		navigate('/');
+		mutation.mutate(
+			{},
+			{
+				onSuccess: () => {
+					logout();
+					navigate('/');
+				},
+				onError: (error) => {
+					console.error('Logout failed:', error);
+				},
+			}
+		);
 	};
 
 	return (
