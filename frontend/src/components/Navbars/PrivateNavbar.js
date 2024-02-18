@@ -1,4 +1,5 @@
 import { Fragment } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { PlusIcon } from '@heroicons/react/20/solid';
@@ -23,6 +24,7 @@ function classNames(...classes) {
 }
 
 export default function PrivateNavbar() {
+	const navigate = useNavigate();
 	//check user authentication
 	const { logout } = useAuth();
 	const { data } = useQuery({ queryFn: getUserProfileAPI, queryKey: ['userProfile'] });
@@ -33,6 +35,7 @@ export default function PrivateNavbar() {
 	const handleLogout = () => {
 		mutation.mutate();
 		logout();
+		navigate('/');
 	};
 
 	return (

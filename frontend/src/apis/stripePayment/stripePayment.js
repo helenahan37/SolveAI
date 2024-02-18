@@ -7,7 +7,9 @@ export const handleFreeSubscriptionAPI = async () => {
 		`${baseURL}/stripe/free-plan`,
 		{},
 		{
-			withCredentials: true,
+			headers: {
+				Authorization: `Bearer ${localStorage.getItem('token')}`,
+			},
 		}
 	);
 	return response?.data;

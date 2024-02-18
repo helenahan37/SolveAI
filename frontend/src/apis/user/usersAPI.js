@@ -40,6 +40,7 @@ export const checkAuthAPI = async () => {
 //* =============User logout=========
 export const logoutAPI = async () => {
 	const token = localStorage.getItem('token');
+
 	const response = await axios.post(
 		`${baseURL}/users/logout`,
 		{},

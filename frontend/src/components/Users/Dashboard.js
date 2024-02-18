@@ -15,30 +15,23 @@ const Dashboard = () => {
 		return <StatusMessage type="error" message={error?.response?.data?.message} />;
 	} else {
 		return (
-			<div className="mx-auto p-6 bg-gray-900 w-screen">
-				<h1 className="text-3xl font-bold text-center mb-8 text-white">Customer Dashboard</h1>
+			<div className="mx-auto p-6 bg-gray-800 min-h-screen w-full">
+				<h1 className="text-4xl font-bold text-center mb-12 text-white">Customer Dashboard</h1>
 
-				<div className="grid grid-cols-1 md:grid-cols-2 gap-10 m-10">
+				<div className="grid grid-cols-1 md:grid-cols-2 ">
 					{/* Profile Section */}
-					<div className="mb-6 bg-white p-4 shadow rounded-lg">
-						<h2 className="text-xl font-semibold mb-4">Profile Information</h2>
+					<div className="bg-gray-700 p-6 shadow-lg rounded-lg">
+						<h2 className="text-2xl font-semibold mb-6 text-white">Profile Information</h2>
 						<div>
-							<div className="mb-4">
-								<label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
-									Name
-								</label>
-								<p className="border rounded w-full py-2 px-3 text-gray-700 leading-tight" id="username">
-									{data?.user?.username}
-								</p>
-							</div>
-							<div className="mb-4">
-								<label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
-									Email
-								</label>
-								<p className="border rounded w-full py-2 px-3 text-gray-700 leading-tight" id="email">
-									{data?.user?.email}
-								</p>
-							</div>
+							<label className="block text-gray-400 text-sm font-bold mb-2" htmlFor="username">
+								Name
+							</label>
+							<p className="text-gray-300 mb-4">{data?.user?.username}</p>
+
+							<label className="block text-gray-400 text-sm font-bold mb-2" htmlFor="email">
+								Email
+							</label>
+							<p className="text-gray-300">{data?.user?.email}</p>
 						</div>
 					</div>
 
