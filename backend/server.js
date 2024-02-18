@@ -6,7 +6,7 @@ const cors = require('cors');
 
 //*===CORS===//
 const corsOptions = {
-	origin: 'https://solveai.onrender.com',
+	origin: 'https://solveai.netlify.app/',
 
 	credentials: true,
 };

@@ -69,7 +69,7 @@ const login = asyncHandler(async (req, res) => {
 	});
 
 	res.setHeader('Access-Control-Allow-Credentials', true);
-	res.setHeader('Access-Control-Allow-Origin', 'https://solveai.onrender.com');
+	res.setHeader('Access-Control-Allow-Origin', 'https://solveai.netlify.app/');
 
 	//set token in cookie
 	res.cookie('token', token, {
