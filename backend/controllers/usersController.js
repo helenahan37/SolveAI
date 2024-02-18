@@ -2,6 +2,7 @@ const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const asyncHandler = require('express-async-handler');
+const generateToken = require('../utils/generateToken');
 
 //* Registration
 const register = asyncHandler(async (req, res) => {
@@ -50,48 +51,24 @@ const register = asyncHandler(async (req, res) => {
 //* login
 const login = asyncHandler(async (req, res) => {
 	const { email, password } = req.body;
-	//validation
-	const user = await User.findOne({ email });
-	if (!user) {
-		res.status(401);
-		throw new Error('Invalid email or password');
+	//Find the user in db by email only
+	const user = await User.findOne({
+		email,
+	});
+	if (user && (await bcrypt.compare(password, user?.password))) {
+		res.json({
+			status: 'success',
+			message: 'User logged in successfully',
+			user,
+			token: generateToken(user?._id),
+		});
+	} else {
+		throw new Error('Invalid login credentials');
 	}
-	//check if the password is correct
-	const isPasswordMatch = await bcrypt.compare(password, user?.password);
-	if (!isPasswordMatch) {
-		res.status(401);
-		throw new Error('Invalid email or password');
-	}
-
-	//Generate token
-	const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-		expiresIn: '3d', // token will expire in 3 days
-	});
-
-	res.setHeader('Access-Control-Allow-Credentials', true);
-	res.setHeader('Access-Control-Allow-Origin', 'https://solveai.netlify.app');
-
-	//set token in cookie
-	res.cookie('token', token, {
-		httpOnly: true,
-		secure: false,
-		sameSite: 'none',
-		expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
-	});
-
-	//send response
-	res.json({
-		status: 'Success',
-		_id: user?._id,
-		message: 'User logged in successfully',
-		username: user?.username,
-		email: user?.email,
-	});
 });
 
 //*logout
 const logout = asyncHandler((req, res) => {
-	res.cookie('token', '', { maxAge: 1 });
 	res.json({
 		status: 'Success',
 		message: 'User logged out successfully',

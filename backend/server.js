@@ -1,31 +1,11 @@
 const express = require('express');
 const app = express();
-const cors = require('cors');
-//*===CORS===//
-// const corsOptions = {
-// 	origin: 'https://solveai.netlify.app',
-// 	credentials: true,
-// };
-
-app.use('*', function (req, res, next) {
-	if (req.headers.referer?.includes('https://solveai.netlify.app')) {
-		res.header('Access-Control-Allow-Origin', 'https://solveai.netlify.app');
-		res.header('Access-Control-Allow-Credentials', true);
-		res.header('Access-Control-Allow-Headers', 'Content-Type,Content-Length, Authorization, Accept,X-Requested-With');
-		res.header('Access-Control-Allow-Methods', 'PUT,POST,GET,DELETE,OPTIONS');
-	}
-
-	if (req.method === 'OPTIONS') {
-		next();
-	} else {
-		next();
-	}
-});
-
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(`${__dirname}/public`));
 require('dotenv').config();
 
+const cors = require('cors');
 const cookieParser = require('cookie-parser');
-
 const User = require('./models/User');
 const cron = require('node-cron');
 
@@ -36,6 +16,11 @@ const openAIRouter = require('./routes/openAIRouter');
 require('./utils/connectDB')();
 
 const PORT = process.env.PORT || 5000;
+
+//*===CORS===//
+app.use(cors());
+
+require('dotenv').config();
 
 //*===Cron Jobs===//
 //* Cron for trial period
