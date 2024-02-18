@@ -15,13 +15,21 @@ export const AuthProvider = ({ children }) => {
 	//update the authenticated user
 
 	useEffect(() => {
-		if (isSuccess) {
-			setIsAuthenticated(data);
-		} else {
-			const storedAuthStatus = localStorage.getItem('isAuthenticated');
-			setIsAuthenticated(storedAuthStatus === 'true');
-		}
-	}, [data, isSuccess]);
+		const checkAuth = async () => {
+			const token = localStorage.getItem('token');
+			if (token) {
+				try {
+					const data = await checkAuthAPI();
+					setIsAuthenticated(data.isAuthenticated);
+				} catch (error) {
+					console.error('Auth check failed', error);
+					setIsAuthenticated(false);
+					localStorage.removeItem('token');
+				}
+			}
+		};
+		checkAuth();
+	}, []);
 
 	//Update the user auth after login
 	const login = () => {
