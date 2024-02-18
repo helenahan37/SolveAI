@@ -3,6 +3,15 @@ require('dotenv').config();
 const app = express();
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
+
+//*===CORS===//
+const corsOptions = {
+	origin: 'https://solveai.onrender.com',
+
+	credentials: true,
+};
+app.use(cors(corsOptions));
+
 const User = require('./models/User');
 const cron = require('node-cron');
 
@@ -98,13 +107,6 @@ cron.schedule('0 0 1 * * *', async () => {
 app.use(express.json());
 //parse cookies
 app.use(cookieParser());
-
-//*===CORS===//
-const corsOptions = {
-	origin: ['https://solveai.netlify.app', 'http://localhost:3000'],
-	credentials: true,
-};
-app.use(cors(corsOptions));
 
 //*===Routes===//
 app.use('/api/users', usersRouter);

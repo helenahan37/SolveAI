@@ -67,6 +67,10 @@ const login = asyncHandler(async (req, res) => {
 	const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
 		expiresIn: '3d', // token will expire in 3 days
 	});
+
+	res.setHeader('Access-Control-Allow-Credentials', true);
+	res.setHeader('Access-Control-Allow-Origin', 'https://solveai.onrender.com');
+
 	//set token in cookie
 	res.cookie('token', token, {
 		httpOnly: true,
