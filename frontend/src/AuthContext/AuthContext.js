@@ -23,12 +23,10 @@ export const AuthProvider = ({ children }) => {
 	//Update the user auth after login
 	const login = () => {
 		setIsAuthenticated(true);
-		localStorage.setItem('isAuthenticated', 'true');
 	};
 	//Update the user auth after login
 	const logout = () => {
 		setIsAuthenticated(false);
-		localStorage.removeItem('isAuthenticated');
 	};
 
 	return (
