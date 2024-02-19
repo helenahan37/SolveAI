@@ -8,7 +8,7 @@ export const AuthProvider = ({ children }) => {
 	const [isAuthenticated, setIsAuthenticated] = useState(false);
 
 	//Make request using react query
-	const { isError, isLoading, data, isSuccess } = useQuery({
+	const { isError, isLoading, isSuccess } = useQuery({
 		queryFn: checkAuthAPI,
 		queryKey: ['checkAuth'],
 	});
