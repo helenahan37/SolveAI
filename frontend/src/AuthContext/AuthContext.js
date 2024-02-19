@@ -8,28 +8,17 @@ export const AuthProvider = ({ children }) => {
 	const [isAuthenticated, setIsAuthenticated] = useState(false);
 
 	//Make request using react query
-	const { isError, isLoading, isSuccess } = useQuery({
+	const { isError, isLoading, data, isSuccess } = useQuery({
 		queryFn: checkAuthAPI,
 		queryKey: ['checkAuth'],
 	});
 	//update the authenticated user
 
 	useEffect(() => {
-		const checkAuth = async () => {
-			const token = localStorage.getItem('token');
-			if (token) {
-				try {
-					const data = await checkAuthAPI();
-					setIsAuthenticated(data.isAuthenticated);
-				} catch (error) {
-					console.error('Auth check failed', error);
-					setIsAuthenticated(false);
-					localStorage.removeItem('token');
-				}
-			}
-		};
-		checkAuth();
-	}, []);
+		if (isSuccess && data) {
+			setIsAuthenticated(data.isAuthenticated);
+		}
+	}, [isSuccess, data]);
 
 	//Update the user auth after login
 	const login = () => {
