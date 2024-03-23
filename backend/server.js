@@ -37,7 +37,7 @@ cron.schedule('0 0 * * * *', async () => {
 			{
 				trialActive: false,
 				subscriptionPlan: 'Free', //put user to free plan after trail expires
-				monthlyRequestCount: 10, //reset request count
+				monthlyRequestCount: 5, //reset request count
 			}
 		);
 	} catch (error) {

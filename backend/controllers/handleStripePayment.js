@@ -124,7 +124,7 @@ const handleFreeSubscription = asyncHandler(async (req, res) => {
 		// check if the user is eligible for renewal
 		if (shouldRenewalSubscription(user)) {
 			user.subscriptionPlan = 'Free';
-			user.monthlyRequestCount = 10;
+			user.monthlyRequestCount = 5;
 			user.apiRequestCount = 0;
 			user.nextBillingDate = calculateNextBillingDate();
 			// make new payment
@@ -134,7 +134,7 @@ const handleFreeSubscription = asyncHandler(async (req, res) => {
 				amount: 0,
 				status: 'Success',
 				reference: Math.random().toString(36).substring(7),
-				monthlyRequestCount: 10,
+				monthlyRequestCount: 5,
 				currency: 'usd',
 			});
 			// push payment to user and save

@@ -62,11 +62,11 @@ const Dashboard = () => {
 						<div>
 							<p className="mb-4">Current Plan: {data?.user?.subscriptionPlan}</p>
 							{data?.user?.subscriptionPlan === 'Trial' && (
-								<p className="border rounded w-full py-2 px-3 mb-4 text-gray-800">Trial: 5 requests within 3 days</p>
+								<p className="border rounded w-full py-2 px-3 mb-4 text-gray-800">Trial: 3 requests within 3 days</p>
 							)}
 
 							{data?.user?.subscriptionPlan === 'Free' && (
-								<p className="border rounded w-full py-2 px-3 mb-4 text-gray-800">Free: 10 monthly requests</p>
+								<p className="border rounded w-full py-2 px-3 mb-4 text-gray-800">Free: 5 monthly requests</p>
 							)}
 
 							{data?.user?.subscriptionPlan === 'Basic' && (
