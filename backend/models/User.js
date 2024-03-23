@@ -62,11 +62,6 @@ const userSchema = new mongoose.Schema(
 	}
 );
 
-// Add a virtual field to the schema
-userSchema.virtual('isTrialActive').get(function () {
-	return this.trialAcitive && new Date() < this.trialExpries;
-});
-
 //! Create User model
 const User = mongoose.model('User', userSchema);
 

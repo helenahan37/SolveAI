@@ -13,7 +13,7 @@ const checkRequestLimit = asyncHandler(async (req, res, next) => {
 	}
 
 	let requestLimit = 0;
-	if (user?.isTrialActive) {
+	if (user?.trialAcitive) {
 		requestLimit = user?.monthlyRequestCount;
 	}
 
