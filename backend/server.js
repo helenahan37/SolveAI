@@ -31,11 +31,11 @@ cron.schedule('0 0 * * * *', async () => {
 		const today = new Date();
 		await User.updateMany(
 			{
-				trialAcitive: true,
+				trialActive: true,
 				trialExpries: { $lt: today },
 			},
 			{
-				trialAcitive: false,
+				trialActive: false,
 				subscriptionPlan: 'Free', //put user to free plan after trail expires
 				monthlyRequestCount: 10, //reset request count
 			}
