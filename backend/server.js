@@ -29,7 +29,7 @@ const PORT = process.env.PORT || 5000;
 cron.schedule('0 0 * * * *', async () => {
 	try {
 		const today = new Date();
-		const updatedUser = await User.updateMany(
+		await User.updateMany(
 			{
 				trialAcitive: true,
 				trialExpries: { $lt: today },
