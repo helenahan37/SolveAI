@@ -89,7 +89,7 @@ const Dashboard = () => {
 						<h2 className="text-xl font-semibold mb-4">Trial Information</h2>
 						<div>
 							<p className="mb-4">
-								Trial Status:
+								Trial Status: {''}
 								{data?.user?.trialActive ? (
 									<span className="text-green-500">Active</span>
 								) : (
