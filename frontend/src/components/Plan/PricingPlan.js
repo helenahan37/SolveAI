@@ -13,7 +13,7 @@ const tiers = [
 		price: '$0.00/month',
 		amount: 0,
 		description: 'The essentials to provide your best work for clients.',
-		features: ['10 Credits', '1 User', 'Basic Support'],
+		features: ['5 Credits', '1 User', 'Basic Support'],
 		mostPopular: false,
 	},
 
