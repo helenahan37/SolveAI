@@ -7,7 +7,7 @@ const FreePlanSubscription = () => {
 	const planDetails = {
 		name: 'Free',
 		price: '$0.00/month',
-		features: ['10 Credits', '1 User', 'Basic Support'],
+		features: ['5 Credits', '1 User', 'Basic Support'],
 	};
 	const mutation = useMutation({ mutationFn: handleFreeSubscriptionAPI });
 
