@@ -39,7 +39,7 @@ const userSchema = new mongoose.Schema(
 		},
 		monthlyRequestCount: {
 			type: Number,
-			default: 100, //100 credit for 3 days
+			default: 5, //5 credit for 3 days
 		},
 		nextBillingDate: Date,
 		payments: [
@@ -61,6 +61,11 @@ const userSchema = new mongoose.Schema(
 		toObject: { virtuals: true },
 	}
 );
+
+// Add a virtual field to the schema
+userSchema.virtual('isTrialActive').get(function () {
+	return this.trialAcitive && new Date() < this.trialExpries;
+});
 
 //! Create User model
 const User = mongoose.model('User', userSchema);
