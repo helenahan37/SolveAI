@@ -90,7 +90,7 @@ const Dashboard = () => {
 						<div>
 							<p className="mb-4">
 								Trial Status:{' '}
-								{data?.user?.trialAcitive ? (
+								{data?.user?.isTrialAcitive ? (
 									<span className="text-green-500">Active</span>
 								) : (
 									<span className="text-yellow-500">Inactive</span>
