@@ -12,24 +12,10 @@ const checkRequestLimit = asyncHandler(async (req, res, next) => {
 		return res.status(404).json({ message: 'User not found' });
 	}
 
-	// Set request limit based on the user's current plan
-	if (user.trialActive) {
-		requestLimit = user.monthlyRequestCount; // Limit for trial users
-	} else {
-		switch (user.subscriptionPlan) {
-			case 'Free':
-				requestLimit = 5; // Example limit for Free plan users
-				break;
-			case 'Basic':
-				requestLimit = 50; // Example limit for Basic plan users
-				break;
-			case 'Premium':
-				requestLimit = 500; // Example limit for Premium plan users
-				break;
-			// Add more cases for additional plans
-		}
+	let requestLimit = user.monthlyRequestCount;
+	if (user.subscriptionPlan === 'Trial' && !user.trialActive) {
+		requestLimit = 0;
 	}
-
 	// check if the use is exceeding the limit
 	if (user?.apiRequestCount >= requestLimit) {
 		throw new Error(
