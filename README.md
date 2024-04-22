@@ -1,6 +1,6 @@
 # SolveAI
 
-An AI-content generator, utilize ChatGPT, Create Subscription-based SAAS with MERN and Stripe
+An AI-content generator, powered by OpenAI, Create Subscription-based SAAS with MERN and Stripe
 
 [Deployed Link](https://solveai.netlify.app/)
 
