@@ -25,7 +25,7 @@ const userSchema = new mongoose.Schema(
 			type: Number,
 			default: 3,
 		},
-		trialExpries: {
+		trialExpires: {
 			type: Date,
 		},
 		subscriptionPlan: {

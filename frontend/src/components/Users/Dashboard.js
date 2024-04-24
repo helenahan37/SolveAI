@@ -96,7 +96,7 @@ const Dashboard = () => {
 									<span className="text-yellow-500">Inactive</span>
 								)}
 							</p>
-							<p className="mb-4">Expires on: {new Date(data?.user?.trialExpries).toDateString()}</p>
+							<p className="mb-4">Expires on: {new Date(data?.user?.trialExpires).toDateString()}</p>
 							<Link
 								to="/plans"
 								className=" py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-gradient-to-r from-purple-500 to-blue-500 hover:from-indigo-600 hover:to-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
