@@ -3,24 +3,6 @@ require('dotenv').config();
 
 const app = express();
 const cors = require('cors');
-
-//*===CORS===//
-const corsOptions = {
-	origin: ['https://solveai.netlify.app' || 'http://localhost:3000'],
-	credentials: true,
-};
-
-app.use(cors(corsOptions));
-
-const User = require('./models/User');
-const cron = require('node-cron');
-
-const { errorHandler } = require('./middlewares/errorMiddleware');
-const stripeRouter = require('./routes/stripeRouter');
-const usersRouter = require('./routes/usersRouter');
-const openAIRouter = require('./routes/openAIRouter');
-require('./utils/connectDB')();
-
 const PORT = process.env.PORT || 5000;
 
 //*===Cron Jobs===//
@@ -103,6 +85,24 @@ cron.schedule('0 0 1 * * *', async () => {
 });
 
 //*===Middleware===//
+
+//*===CORS===//
+const corsOptions = {
+	origin: ['https://solveai.netlify.app' || 'http://localhost:3000'],
+	credentials: true,
+};
+
+app.use(cors(corsOptions));
+
+const User = require('./models/User');
+const cron = require('node-cron');
+
+const { errorHandler } = require('./middlewares/errorMiddleware');
+const stripeRouter = require('./routes/stripeRouter');
+const usersRouter = require('./routes/usersRouter');
+const openAIRouter = require('./routes/openAIRouter');
+require('./utils/connectDB')();
+
 //pass incoming jaon data
 app.use(express.json());
 
