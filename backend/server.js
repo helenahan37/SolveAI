@@ -1,8 +1,8 @@
 const express = require('express');
 require('dotenv').config();
+const stripeRouter = require('./routes/stripeRouter');
 const usersRouter = require('./routes/usersRouter');
 const openAIRouter = require('./routes/openAIRouter');
-const stripeRouter = require('./routes/stripeRouter');
 const cron = require('node-cron');
 const cors = require('cors');
 require('./utils/connectDB')();
@@ -92,17 +92,15 @@ cron.schedule('0 0 1 * * *', async () => {
 });
 
 //*===Middleware===//
-app.use(express.json()); //pass incoming json data//*===CORS===//
+app.use(express.json()); //pass incoming json data
+
+//*===CORS===//
 const corsOptions = {
 	origin: ['https://solveai.netlify.app' || 'http://localhost:3000'],
 	credentials: true,
 };
 
 app.use(cors(corsOptions));
-
-const stripeRouter = require('./routes/stripeRouter');
-const usersRouter = require('./routes/usersRouter');
-const openAIRouter = require('./routes/openAIRouter');
 
 //pass incoming jaon data
 app.use(express.json());
