@@ -10,7 +10,9 @@ import { useAuth } from '../../AuthContext/AuthContext';
 
 const validationSchema = Yup.object({
 	email: Yup.string().email('Enter a valid email').required('Email is required'),
-	password: Yup.string().required('Password is required'),
+	password: Yup.string()
+		.min(6, 'Password must be at least 6 characters') // Ensures minimum length of 6
+		.required('Password is required'),
 });
 
 const Login = () => {
