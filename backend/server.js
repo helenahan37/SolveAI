@@ -12,6 +12,31 @@ const { errorHandler } = require('./middlewares/errorMiddleware');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+//*===Middleware===//
+app.use(express.json()); //pass incoming json data
+
+//*===CORS===//
+const corsOptions = {
+	origin: ['https://solveai.netlify.app' || 'http://localhost:3000'],
+	credentials: true,
+};
+
+app.use(cors(corsOptions));
+
+//pass incoming jaon data
+app.use(express.json());
+
+//*===Routes===//
+app.use('/api/users', usersRouter);
+app.use('/api/openai', openAIRouter);
+app.use('/api/stripe', stripeRouter);
+
+//*===Error Handler===//
+app.use(errorHandler);
+
+// Serve static files
+app.listen(PORT, console.log(`Server started on port ${PORT}`));
+
 //*===Cron Jobs===//
 //* Cron for trial period
 // cron check pay period on every single day
@@ -90,28 +115,3 @@ cron.schedule('0 0 1 * * *', async () => {
 		console.error(error);
 	}
 });
-
-//*===Middleware===//
-app.use(express.json()); //pass incoming json data
-
-//*===CORS===//
-const corsOptions = {
-	origin: ['https://solveai.netlify.app' || 'http://localhost:3000'],
-	credentials: true,
-};
-
-app.use(cors(corsOptions));
-
-//pass incoming jaon data
-app.use(express.json());
-
-//*===Routes===//
-app.use('/api/users', usersRouter);
-app.use('/api/openai', openAIRouter);
-app.use('/api/stripe', stripeRouter);
-
-//*===Error Handler===//
-app.use(errorHandler);
-
-// Serve static files
-app.listen(PORT, console.log(`Server started on port ${PORT}`));
