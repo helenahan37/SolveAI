@@ -17,7 +17,7 @@ app.use(express.json()); //pass incoming json data
 
 //*===CORS===//
 const corsOptions = {
-	origin: ['https://solveai.netlify.app' || 'http://localhost:3000'],
+	origin: ['https://solveai.netlify.app', 'http://localhost:3000'],
 	credentials: true,
 };
 
