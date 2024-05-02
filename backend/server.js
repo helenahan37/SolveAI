@@ -39,7 +39,7 @@ app.listen(PORT, console.log(`Server started on port ${PORT}`));
 
 //*===Cron Jobs===//
 //* Cron for trial period
-// cron check pay period on every single day
+// cron check pay period on every single second
 cron.schedule('0 0 * * * *', async () => {
 	try {
 		const today = new Date();
