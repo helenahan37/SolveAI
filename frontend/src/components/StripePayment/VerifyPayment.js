@@ -40,7 +40,7 @@ const VerifyPayment = () => {
 						<Link
 							to="/generate-content"
 							className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-							Start Using SoveAI
+							Start Using SovleAI
 						</Link>
 					</div>
 				)}
